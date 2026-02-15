@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+  content="width=device-width,
+  initial-scale=1.0">
+  <title>Decorino</title>
+  <style>
+    body {
+      background-color: #EEF7FF;
+      font-family: "Tahoma", sans-serif;
+      line-height: 1.8;
+    }
+
+
+    .section-header {
+      text-align: center;
+      padding: 50px 20px;
+      color: #4D869C;
+    }
+
+
+    .section-header h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+
+
+    .card-custom {
+      background-color: #CDE8E5;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      margin-bottom: 30px;
+    }
+
+
+    .card-img-top {
+      border-bottom: 3px solid #7AB2B2;
+    }
+
+
+    .card-body h5 {
+      color: #4D869C;
+      font-weight: bold;
+    }
+
+
+    .card-body p {
+      color: #4D869C;
+    }
+
+
+    .btn-custom {
+      background-color: #7AB2B2;
+      color: white;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 50px;
+      transition: 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+
+    .btn-custom:hover {
+      background-color: #4D869C;
+      color: white;
+    }
+
+    .menu-container {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1000;
+    }
+
+    .menu-toggle {
+      display: none;
+    }
+
+    .menu-button {
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #7AB2B2, #4D869C);
+      border: 3px solid #CDE8E5;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 5px 20px rgba(77, 134, 156, 0.4);
+      transition: all 0.3s ease;
+      color: white;
+      font-size: 22px;
+      font-weight: bold;
+      position: relative;
+    }
+
+    .menu-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px rgba(77, 134, 156, 0.5);
+    }
+
+    .menu-button::before {
+      content: '☰';
+      transition: all 0.3s ease;
+    }
+
+    .menu-items {
+      position: absolute;
+      top: 75px;
+      left: 0;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      border: 2px solid #CDE8E5;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-20px);
+      transition: all 0.3s ease;
+    }
+
+    .menu-toggle:checked~.menu-items {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .menu-item {
+      display: block;
+      padding: 15px 25px;
+      background: #EEF7FF;
+      border-bottom: 1px solid #CDE8E5;
+      text-decoration: none;
+      color: #4D869C;
+      font-weight: 600;
+      text-align: center;
+      min-width: 130px;
+      transition: all 0.2s ease;
+    }
+
+    .menu-item:last-child {
+      border-bottom: none;
+    }
+
+    .menu-item:hover {
+      background: #CDE8E5;
+      color: #4D869C;
+      transform: translateX(3px);
+    }
+
+
+   .back {
+      width: 50px;
+      height: 50px;
+      background-color: #4D869C;
+      border-radius: 50%;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* text-align: center; */
+      /* padding-top: 10px; */
+      color: white;
+      font-size: 12px;
+      box-shadow: 0 5px 20px rgba(77, 134, 156, 0.4);
+      border: 3px solid #CDE8E5;
+      text-decoration: none;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    
+    @media (max-width: 576px) {
+      .back {
+        width: 40px;
+        height: 40px;
+        font-size: 10px;
+        top: 15px;
+        right: 15px;
+      }
+    }
+
+    .back:hover {
+      box-shadow: 0 8px 25px rgba(77, 134, 156, 0.5);
+      transform: translateX(3px);
+
+
+    }
+  </style>
+  <link href="./bootstrap/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="menu-container">
+    <input type="checkbox" id="menuToggle" class="menu-toggle">
+    <label for="menuToggle" class="menu-button" style="padding: 0%;"></label>
+    <div class="menu-items">
+      <a href="./khane.html" class="menu-item">خانه</a>
+      <a href="./idea.html" class="menu-item">انواع سبک </a>
+      <a href="./DecorSolution.html" class="menu-item">ايده کوتاه</a>
+      <a href="./Articles.html" class="menu-item"> مقالات </a>
+      <a href="./Color.html" class="menu-item"> رنگ ها </a>
+
+    </div>
+  </div>
+
+  <a href="./khane.html">
+    <div class="back">برگشت</div>
+  </a>
+
+
+
+
+
+
+  <div class="section-header">
+    <h1>مقالات دکوراسیون</h1>
+    <p>۱۰ مقاله برتر برای بهبود طراحی داخلی خانه</p>
+  </div>
+
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-4 col-md-6">
+        <div class="card card-custom">
+          <img src="./Articles/1.jpeg" class="card-img-top" alt="خانه کوچک">
+          <div class="card-body">
+            <h5>چطور خانه کوچک خود را بزرگ‌تر نشان دهیم؟</h5>
+            <p>ترفندهای طراحی داخلی و استفاده هوشمند از فضا برای بزرگ‌تر جلوه دادن خانه‌های کوچک و جمع‌وجور...</p>
+            <a href="article1.html" class="btn-custom">مطالعه بیشتر</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="card card-custom">
+          <img src="./Articles/2.jpeg" class="card-img-top" alt="اتاق خواب">
+          <div class="card-body" style="padding-bottom: 40px;">
+            <h5>ایده‌های خلاقانه برای اتاق خواب</h5>
+            <p>روش‌های نوین برای طراحی اتاق خواب جذاب و دلنشین با چیدمان مناسب و رنگ‌های هماهنگ...</p>
+            <a href="article2.html" class="btn-custom">مطالعه بیشتر</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="card card-custom">
+          <img src="./Articles/3.jpeg" class="card-img-top" alt="ترند رنگ دکوراسیون">
+          <div class="card-body">
+            <h5>جدیدترین ترند رنگ‌ها در دکوراسیون ۲۰۲۵</h5>
+            <p>آشنایی با رنگ‌های مدرن و پرطرفدار برای فضاهای داخلی و نحوه ترکیب آن‌ها با مبلمان و دیوارها...</p>
+            <a href="article3.html" class="btn-custom">مطالعه بیشتر</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="card card-custom">
+          <img src="./Articles/4.jpeg" class="card-img-top" alt="نورپردازی">
+          <div class="card-body">
+            <h5>نورپردازی مدرن در دکوراسیون</h5>
+            <p>ایده‌ها و راهکارهای نورپردازی حرفه‌ای برای ایجاد فضایی گرم و دلنشین در تمام بخش‌های خانه...</p>
+            <a href="article4.html" class="btn-custom">مطالعه بیشتر</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="card card-custom">
+          <img src="./Articles/5.jpeg" class="card-img-top" alt="مبلمان">
+          <div class="card-body">
+            <h5>نکات انتخاب مبلمان مناسب</h5>
+            <p>راهنمای انتخاب مبلمان با کیفیت، مناسب برای فضای خانه و ترکیب صحیح با سایر عناصر دکوراسیون...</p>
+            <a href="article5.html" class="btn-custom">مطالعه بیشتر</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="card card-custom">
+          <img src="./Articles/6.jpeg" class="card-img-top" alt="آشپزخانه">
+          <div class="card-body">
+            <h5>ترکیب رنگ‌ها برای آشپزخانه</h5>
+            <p>روش‌های خلاقانه برای انتخاب و ترکیب رنگ‌ها در آشپزخانه برای محیطی جذاب و کاربردی...</p>
+            <a href="article6.html" class="btn-custom">مطالعه بیشتر</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="card card-custom">
+          <img src="./Articles/7.jpeg" class="card-img-top" alt="اتاق نشیمن">
+          <div class="card-body">
+            <h5>چیدمان بهینه اتاق نشیمن</h5>
+            <p>ترفندها و ایده‌هایی برای چیدمان اتاق نشیمن راحت و زیبا که هم کاربردی و هم دلنشین باشد...</p>
+            <a href="article7.html" class="btn-custom">مطالعه بیشتر</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="card card-custom">
+          <img src="./Articles/8.jpeg" class="card-img-top" alt="گیاهان">
+          <div class="card-body">
+            <h5>استفاده از گیاهان در دکوراسیون داخلی</h5>
+            <p>چگونه با استفاده از گیاهان زنده، فضای خانه را تازه و دلنشین کنیم و حس آرامش ایجاد کنیم...</p>
+            <a href="article8.html" class="btn-custom">مطالعه بیشتر</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="card card-custom">
+          <img src="./Articles/9.jpeg" class="card-img-top" alt="آشپزخانه کوچک">
+          <div class="card-body">
+            <h5>راهکارهای فضای کوچک برای آشپزخانه</h5>
+            <p>ترفندهای کاربردی برای استفاده بهینه از فضا در آشپزخانه‌های کوچک و افزایش کارایی آن‌ها...</p>
+            <a href="article9.html" class="btn-custom">مطالعه بیشتر</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="card card-custom">
+          <img src="./Articles/10.jpeg" class="card-img-top" alt="دفتر کار خانگی">
+          <div class="card-body">
+            <h5>ترفندهای چیدمان دفتر کار خانگی</h5>
+            <p>ایده‌ها و نکات کاربردی برای طراحی یک دفتر کار خانگی راحت، منظم و الهام‌بخش برای افزایش بهره‌وری...</p>
+            <a href="article10.html" class="btn-custom">مطالعه بیشتر</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <SCript src="./bootstrap/bootstrap.bundle.min.js"></SCript>
+</body>
+
+</html>

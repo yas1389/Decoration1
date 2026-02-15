@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Decorino</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #EEF7FF, #CDE8E5);
+      font-family: Tahoma, sans-serif;
+    }
+
+
+    .hero-decorino {
+      text-align: center;
+      padding: 100px 20px;
+      background: linear-gradient(135deg, #4D869C, #7AB2B2);
+      color: #EEF7FF;
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    }
+
+    .hero-decorino h1 {
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+
+    .hero-decorino p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+
+    .cards-decorino {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+
+    .card-decorino {
+      background: rgba(238, 247, 255, 0.7);
+      border-radius: 20px;
+      padding: 25px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      color: #4D869C;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      transform: rotate(-2deg);
+      transition: transform 0.5s ease, box-shadow 0.5s ease, background 0.5s ease;
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+    }
+
+
+    .card-decorino span {
+      font-size: 2.5rem;
+      display: block;
+      margin-bottom: 15px;
+      transform: translateY(0);
+      transition: transform 0.5s ease;
+    }
+
+
+    .card-decorino:hover {
+      transform: rotate(0deg) scale(1.05);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+      background: rgba(205, 232, 229, 0.85);
+    }
+
+    .card-decorino:hover span {
+      transform: translateY(-10px);
+    }
+
+
+    .card-text-hidden {
+      opacity: 0;
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-top: 10px;
+      transform: translateY(15px);
+    }
+
+    .card-decorino:hover .card-text-hidden {
+      opacity: 1;
+      transform: translateY(0);
+      font-weight: bold;
+    }
+
+
+    .menu-container {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1000;
+    }
+
+    .menu-toggle {
+      display: none;
+    }
+
+    .menu-button {
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #7AB2B2, #4D869C);
+      border: 3px solid #CDE8E5;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 5px 20px rgba(77, 134, 156, 0.4);
+      transition: all 0.3s ease;
+      color: white;
+      font-size: 22px;
+      font-weight: bold;
+      position: relative;
+    }
+
+    .menu-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px rgba(77, 134, 156, 0.5);
+    }
+
+    .menu-button::before {
+      content: '☰';
+      transition: all 0.3s ease;
+    }
+
+    .menu-items {
+      position: absolute;
+      top: 75px;
+      left: 0;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      border: 2px solid #CDE8E5;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-20px);
+      transition: all 0.3s ease;
+    }
+
+    .menu-toggle:checked~.menu-items {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .menu-item {
+      display: block;
+      padding: 15px 25px;
+      background: #EEF7FF;
+      border-bottom: 1px solid #CDE8E5;
+      text-decoration: none;
+      color: #4D869C;
+      font-weight: 600;
+      text-align: center;
+      min-width: 130px;
+      transition: all 0.2s ease;
+    }
+
+    .menu-item:last-child {
+      border-bottom: none;
+    }
+
+    .menu-item:hover {
+      background: #CDE8E5;
+      color: #4D869C;
+      transform: translateX(3px);
+    }
+
+
+    .back {
+      width: 50px;
+      height: 50px;
+      background-color: #4D869C;
+      border-radius: 50%;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* text-align: center; */
+      /* padding-top: 10px; */
+      color: white;
+      font-size: 12px;
+      box-shadow: 0 5px 20px rgba(77, 134, 156, 0.4);
+      border: 3px solid #CDE8E5;
+      text-decoration: none;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    
+    @media (max-width: 576px) {
+      .back {
+        width: 40px;
+        height: 40px;
+        font-size: 10px;
+        top: 15px;
+        right: 15px;
+      }
+    }
+
+    .back:hover {
+      box-shadow: 0 8px 25px rgba(77, 134, 156, 0.5);
+      transform: translateX(3px);
+
+
+    }
+  </style>
+  <link href="./bootstrap/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="menu-container">
+    <input type="checkbox" id="menuToggle" class="menu-toggle">
+    <label for="menuToggle" class="menu-button"></label>
+    <div class="menu-items">
+      <a href="./khane.html" class="menu-item">خانه</a>
+      <a href="./idea.html" class="menu-item">انواع سبک</a>
+      <a href="./DecorSolution.html" class="menu-item">ايده کوتاه</a>
+      <a href="./Articles.html" class="menu-item"> مقالات </a>
+      <a href="./Color.html" class="menu-item"> رنگ ها </a>
+
+    </div>
+  </div>
+
+  <a href="./Slider1.html">
+    <div class="back">برگشت</div>
+  </a>
+
+  <div class="hero-decorino">
+    <h1>🏠 مخصوص دکورینو </h1>
+    <p>تجربه‌ای منحصر به فرد برای طراحی خانه شما…</p>
+  </div>
+
+  <div class="cards-decorino">
+
+    <div class="card-decorino">
+      <span>🛋️</span>
+      طراحی شخصی
+      <div class="card-text-hidden">
+        خونتو مطابق سبک خودت بچین، تجربه‌ای که فقط تو داری و پشیمون نمی‌شی…
+      </div>
+    </div>
+
+    <div class="card-decorino">
+      <span>💡</span>
+      ایده‌های اختصاصی
+      <div class="card-text-hidden">
+        ایده‌هایی که هیچ جای دیگه پیدا نمی‌کنه، فقط دکورینو برات داره…
+      </div>
+    </div>
+
+    <div class="card-decorino">
+      <span>📐</span>
+      چیدمان هوشمند
+      <div class="card-text-hidden">
+        فضا رو به بهترین شکل بچین و حس آرامش و نظم رو تجربه کن… پشیمون نمیشی!
+      </div>
+    </div>
+
+    <div class="card-decorino">
+      <span>🎨</span>
+      رنگ‌بندی خلاقانه
+      <div class="card-text-hidden">
+        ترکیب رنگ‌هایی که حس خلاقیت و انرژی مثبت میاره، فقط مخصوص خانه تو…
+      </div>
+    </div>
+
+    <div class="card-decorino">
+      <span>✨</span>
+      جزئیات لوکس
+      <div class="card-text-hidden">
+        هر جزئیات کوچک، خانه‌ت رو خاص و لوکس می‌کنه، این تجربه‌ی متفاوتو از دست نده…
+      </div>
+    </div>
+
+  </div>
+  <script src="./bootstrap/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

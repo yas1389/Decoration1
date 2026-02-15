@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decorino</title>
+    <link rel="stylesheet" href="./bootstrap/bootstrap.min.css">
+    <style>
+        * {
+            font-family: 'Vazirmatn', sans-serif;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #CDE8E5, #EEF7FF, #7dbdbd);
+            min-height: 100vh;
+        }
+
+        .text-ocean {
+            color: #4D869C !important;
+        }
+
+        .text-teal {
+            color: #7AB2B2 !important;
+        }
+
+        .bg-mint {
+            background-color: #CDE8E5 !important;
+        }
+
+        .bg-ice {
+            background-color: #EEF7FF !important;
+        }
+
+        .bg-teal {
+            background-color: #7AB2B2 !important;
+        }
+
+        .bg-ocean {
+            background-color: #4D869C !important;
+        }
+
+        .btn-ocean {
+            background-color: #4D869C;
+            border-color: #4D869C;
+            color: white;
+        }
+
+        .btn-ocean:hover {
+            background-color: #7AB2B2;
+            border-color: #7AB2B2;
+            color: white;
+        }
+
+        .btn-outline-ocean {
+            border-color: #4D869C;
+            color: #4D869C;
+        }
+
+        .btn-outline-ocean:hover {
+            background-color: #4D869C;
+            border-color: #4D869C;
+            color: white;
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .hover-lift {
+            transition: all 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(77, 134, 156, 0.2);
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, #4D869C, #7AB2B2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .color-palette {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .color-palette:hover {
+            transform: scale(1.05);
+        }
+
+        .style-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .style-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(77, 134, 156, 0.2);
+        }
+
+        .trend-badge {
+            background: linear-gradient(45deg, #7AB2B2, #4D869C);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.8;
+            }
+        }
+
+        .navbar-custom {
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+        }
+
+        .color-box {
+            height: 80px;
+            border-radius: 15px;
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .room-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .room-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 1rem;
+        }
+
+
+
+
+        .menu-container {
+            position: fixed;
+            top: 3px;
+            left: 20px;
+            z-index: 1000;
+        }
+
+        .menu-toggle {
+            display: none;
+        }
+
+        .menu-button {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #7AB2B2, #4D869C);
+            border: 3px solid #CDE8E5;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 20px rgba(77, 134, 156, 0.4);
+            transition: all 0.3s ease;
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .menu-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(77, 134, 156, 0.5);
+        }
+
+        .menu-button::before {
+            content: '☰';
+            transition: all 0.3s ease;
+            padding-top: 3px;
+        }
+
+        .menu-items {
+            position: absolute;
+            top: 75px;
+            left: 0;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            border: 2px solid #CDE8E5;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-20px);
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle:checked~.menu-items {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .menu-item {
+            display: block;
+            padding: 15px 25px;
+            background: #EEF7FF;
+            border-bottom: 1px solid #CDE8E5;
+            text-decoration: none;
+            color: #4D869C;
+            font-weight: 600;
+            text-align: center;
+            min-width: 130px;
+            transition: all 0.2s ease;
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .menu-item:hover {
+            background: #CDE8E5;
+            color: #4D869C;
+            transform: translateX(3px);
+        }
+
+
+        @media (max-width: 992px) {
+            .navbar-brand {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-items {
+                width: 90vw;
+                left: 50%;
+                transform: translateX(-50%) translateY(-20px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-button {
+                width: 55px;
+                height: 55px;
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2rem !important;
+            }
+
+            .hero-section p {
+                font-size: 0.9rem !important;
+            }
+
+            .hero-section .btn-lg {
+                /* padding: 0.5rem 1.5rem; */
+                font-size: 0.9rem !important;
+            }
+        }
+
+        .btn-lg {
+            padding-left: 1.5rem !important;
+            padding-right: 1.5rem !important;
+            font-size: 0.9rem !important; 
+        }
+
+        @media (max-width: 768px) {
+
+            .row.g-4>.col-md-4,
+            .row.g-4>.col-md-6,
+            .row.g-4>.col-lg-4 {
+                flex: 0% 0% 100%;
+                max-width: 100%;
+            }
+
+        }
+
+        @media (max-width: 768px) {
+
+            .color-palette,
+            .style-card,
+            .room-card {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .btn {
+                width: 100%;
+                font-size: 0.9rem;
+                padding: 0.5rem 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            footer h4 {
+                font-size: 2rem;
+                left: auto;
+                bottom: auto;
+                position: static;
+                padding-top: 1rem;
+                text-align: center;
+            }
+
+            footer .col-lg-3,
+            footer .col-md-6 {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .fs-1 {
+                font-size: 2rem !important;
+            }
+
+            .fs-2 {
+                font-size: 1.5rem !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 2rem 1rem !important;
+            }
+        }
+
+        body,
+        html {
+            overflow-x: hidden;
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding-left:10px !important;
+                padding-right:10px !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-custom">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-3 gradient-text" href="./khane.html">💡دکورينو</a>
+            <div class="menu-container">
+                <input type="checkbox" id="menuToggle" class="menu-toggle">
+                <label for="menuToggle" class="menu-button"></label>
+                <div class="menu-items">
+                    <a href="./khane.html" class="menu-item">خانه</a>
+                    <a href="./idea.html" class="menu-item">انواع سبک</a>
+                    <a href="./DecorSolution.html" class="menu-item">ايده کوتاه</a>
+                    <a href="./Articles.html" class="menu-item"> مقالات </a>
+                    <a href="./Color.html" class="menu-item"> رنگ ها </a>
+
+                </div>
+            </div>
+        </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section d-flex align-items-center">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-2 fw-bold text-ocean mb-4">
+                        هزاران ايده
+                        <span class="gradient-text d-block">دکوراسيون</span>
+                        در يک جا
+                    </h1>
+                    <p class="lead text-ocean mb-5">
+                        از سبک‌های کلاسيک تا مدرن، از پالت رنگ‌های آرام تا پرانرژی - همه چيز برای تبديل خانه‌تان به
+                        فضايی رويايی
+                    </p>
+                    <div class="d-flex flex-column flex-sm-row gap-3">
+                        <a href="./Slider1.html" style="text-decoration: none; color: white; display: block;"> <button
+                                class="btn btn-ocean btn-lg rounded-pill px-5">🔍 کاوش ايده‌ها</button></a>
+                        <a href="./Color.html" style="text-decoration: none; color: white; display: block;"> <button
+                                class="btn btn-outline-ocean btn-lg rounded-pill px-5">🎨 ديدن رنگ‌ها</button></a>
+                    </div>
+                </div>
+    </section>
+
+    <section class="py-5 bg-white">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-6 col-md-3">
+                    <div class="text-center hover-lift bg-mint bg-opacity-25 rounded-4 p-4">
+                        <div class="fs-1 mb-2">🎨</div>
+                        <div class="fs-2 fw-bold text-ocean mb-2">20+</div>
+                        <div class="text-ocean opacity-75">پالت رنگ</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="text-center hover-lift bg-teal bg-opacity-25 rounded-4 p-4">
+                        <div class="fs-1 mb-2">🏡</div>
+                        <div class="fs-2 fw-bold text-ocean mb-2">10+</div>
+                        <div class="text-ocean opacity-75">سبک دکوراسيون</div>
+                    </div>
+                </div>
+
+
+                <div class="col-6 col-md-3">
+                    <div class="text-center hover-lift bg-mint bg-opacity-25 rounded-4 p-4">
+                        <div class="fs-1 mb-2">⭐</div>
+                        <div class="fs-2 fw-bold text-ocean mb-2">10+</div>
+                        <div class="text-ocean opacity-75">مقاله ها</div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-3">
+                    <div class="text-center hover-lift bg-ice rounded-4 p-4 border border-2"
+                        style="border-color: var(--mint) !important;">
+                        <div class="fs-1 mb-2">💡</div>
+                        <div class="fs-2 fw-bold text-ocean mb-2">30+</div>
+                        <div class="text-ocean opacity-75">ايده خلاقانه</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="colors" class="py-5 bg-mint bg-opacity-30">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-4 fw-bold text-ocean mb-4">🎨 چند پالت‌های رنگی محبوب </h2>
+                <p class="lead text-ocean opacity-75 mx-auto" style="max-width: 600px;">
+                    ترکيب‌های رنگی که امسال در دنيای دکوراسيون طوفان به پا کرده‌اند
+                </p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card color-palette hover-lift border-0 rounded-4 p-4">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="fw-bold text-ocean mb-0">آرامش‌بخش</h5>
+                            <span class="badge trend-badge text-white rounded-pill">ترند</span>
+                        </div>
+                        <div class="row g-2 mb-3">
+                            <div class="col-3">
+                                <div class="color-box" style="background-color: #b7d7c6; color: #1E40AF;"></div>
+                            </div>
+                            <div class="col-3">
+                                <div class="color-box" style="background-color: #f3e9dc; color: #1E40AF;"></div>
+                            </div>
+
+                            <div class="col-3">
+                                <div class="color-box" style="background-color: #d6d6d6; color: white;"></div>
+                            </div>
+                            <div class="col-3">
+                                <div class="color-box" style="background-color: #aedff7; color: white;"></div>
+                            </div>
+                        </div>
+                        <p class="text-ocean opacity-75 small mb-0">مناسب برای: اتاق خواب، حمام، فضاهای آرام‌بخش</p>
+                    </div>
+                </div>
+
+                <!-- Palette 2 -->
+                <div class="col-md-4">
+                    <div class="card color-palette hover-lift border-0 rounded-4 p-4">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="fw-bold text-ocean mb-0">لوکس</h5>
+                            <span class="badge bg-warning text-dark rounded-pill">محبوب</span>
+                        </div>
+                        <div class="row g-2 mb-3">
+                            <div class="col-3">
+                                <div class="color-box" style="background-color: #1c1c1c; color: #92400E;"></div>
+                            </div>
+                            <div class="col-3">
+                                <div class="color-box" style="background-color: #7d7d7d; color: #92400E;"></div>
+                            </div>
+                            <div class="col-3">
+                                <div class="color-box" style="background-color: #d4af37; color: white;"></div>
+                            </div>
+                            <div class="col-3">
+                                <div class="color-box" style="background-color: #faf3e0; color: white;"></div>
+                            </div>
+                        </div>
+                        <p class="text-ocean opacity-75 small mb-0">مناسب برای: پذيرايی، آشپزخانه، فضاهای اجتماعی</p>
+                    </div>
+                </div>
+
+                <!-- Palette 3 -->
+                <div class="col-md-4">
+                    <div class="card color-palette hover-lift border-0 rounded-4 p-4">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="fw-bold text-ocean mb-0">شيک</h5>
+                            <span class="badge bg-success text-white rounded-pill">جديد</span>
+                        </div>
+                        <div class="row g-2 mb-3">
+                            <div class="col-3">
+                                <div class="color-box" style="background-color: #5a4633; color: #166534;"></div>
+                            </div>
+                            <div class="col-3">
+                                <div class="color-box" style="background-color: #f5f5f5; color: #166534;"></div>
+                            </div>
+                            <div class="col-3">
+                                <div class="color-box" style="background-color: #e6d3b3; color: white;"></div>
+                            </div>
+                            <div class="col-3">
+                                <div class="color-box" style="background-color: #8aa399; color: white;"></div>
+                            </div>
+                        </div>
+                        <p class="text-ocean opacity-75 small mb-0">مناسب برای: اتاق کار، باغچه داخلی، فضاهای مطالعه</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-5">
+                <a href="./Color.html"><button class="btn btn-ocean btn-lg rounded-pill px-5">🎨 مشاهده ۲۰+ پالت
+                        ديگر</button></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="styles" class="py-5 bg-white">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-4 fw-bold text-ocean mb-4">🏡 چند نمونه سبک های دکوراسيون</h2>
+                <p class="lead text-ocean opacity-75 mx-auto" style="max-width: 600px;">
+                    از کلاسيک تا مدرن، هر سبک با ويژگی‌ها و نکات کاربردی
+                </p>
+            </div>
+
+            <div class="row g-4">
+                <!-- Modern Style -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card style-card border-0 rounded-4 p-4 h-100">
+
+
+                        <div class="text-center mb-4">
+                            <div class="fs-1">🏢</div>
+                            <h4 class="fw-bold text-ocean mt-3">مدرن</h4>
+                        </div>
+                        <div class="mb-4">
+                            <div class="d-flex align-items-center mb-2">
+                                <span class="bg-teal rounded-circle me-3" style="width: 12px; height: 12px;"></span>
+                                <span class="text-ocean opacity-75">خطوط ساده و تميز</span>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <span class="bg-teal rounded-circle me-3" style="width: 12px; height: 12px;"></span>
+                                <span class="text-ocean opacity-75">رنگ‌های خنثی</span>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <span class="bg-teal rounded-circle me-3" style="width: 12px; height: 12px;"></span>
+                                <span class="text-ocean opacity-75">مواد طبيعی</span>
+                            </div>
+                        </div>
+                        <button class="btn bg-mint text-ocean rounded-pill w-100 fw-semibold mt-auto"><a
+                                href="./idea.html" style="text-decoration: none; display: block;">بيشتر بدانيد</a>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Classic Style -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card style-card border-0 rounded-4 p-4 h-100">
+                        <div class="text-center mb-4">
+                            <div class="fs-1">🏛️</div>
+                            <h4 class="fw-bold text-ocean mt-3">کلاسيک</h4>
+                        </div>
+                        <div class="mb-4">
+                            <div class="d-flex align-items-center mb-2">
+                                <span class="bg-ocean rounded-circle me-3" style="width: 12px; height: 12px;"></span>
+                                <span class="text-ocean opacity-75">جزئيات پيچيده</span>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <span class="bg-ocean rounded-circle me-3" style="width: 12px; height: 12px;"></span>
+                                <span class="text-ocean opacity-75">مبلمان سنتی</span>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <span class="bg-ocean rounded-circle me-3" style="width: 12px; height: 12px;"></span>
+                                <span class="text-ocean opacity-75">رنگ‌های گرم</span>
+                            </div>
+                        </div>
+                        <button class="btn bg-mint text-ocean rounded-pill w-100 fw-semibold mt-auto"><a
+                                href="./idea.html" style="text-decoration: none; display: block;">بيشتر بدانيد</a>
+                        </button>
+                    </div>
+                </div>
+
+
+
+                <!-- Minimalist Style -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card style-card border-0 rounded-4 p-4 h-100">
+                        <div class="text-center mb-4">
+                            <div class="fs-1">⚪</div>
+                            <h4 class="fw-bold text-ocean mt-3">مينيمال</h4>
+                        </div>
+                        <div class="mb-4">
+                            <div class="d-flex align-items-center mb-2">
+                                <span class="bg-light border rounded-circle me-3"
+                                    style="width: 12px; height: 12px;"></span>
+                                <span class="text-ocean opacity-75">کمتر، بهتر</span>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <span class="bg-light border rounded-circle me-3"
+                                    style="width: 12px; height: 12px;"></span>
+                                <span class="text-ocean opacity-75">فضای خالی</span>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <span class="bg-light border rounded-circle me-3"
+                                    style="width: 12px; height: 12px;"></span>
+                                <span class="text-ocean opacity-75">عملکرد محور</span>
+                            </div>
+                        </div>
+                        <button class="btn bg-mint text-ocean rounded-pill w-100 fw-semibold mt-auto"><a
+                                href="./idea.html" style="text-decoration: none; display: block;">بيشتر بدانيد</a>
+                        </button>
+                    </div>
+                </div>
+                <!-- Bohemian Style -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card style-card border-0 rounded-4 p-4 h-100">
+                        <div class="text-center mb-4">
+                            <div class="fs-1">🌸</div>
+                            <h4 class="fw-bold text-ocean mt-3">روستيک</h4>
+                        </div>
+                        <div class="mb-4">
+                            <div class="d-flex align-items-center mb-2">
+                                <span class="bg-danger rounded-circle me-3" style="width: 12px; height: 12px;"></span>
+                                <span class="text-ocean opacity-75">رنگ‌های زنده</span>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <span class="bg-danger rounded-circle me-3" style="width: 12px; height: 12px;"></span>
+                                <span class="text-ocean opacity-75">بافت‌های متنوع</span>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <span class="bg-danger rounded-circle me-3" style="width: 12px; height: 12px;"></span>
+                                <span class="text-ocean opacity-75">آزادی خلاقانه</span>
+                            </div>
+                        </div>
+                        <button class="btn bg-mint text-ocean rounded-pill w-100 fw-semibold mt-auto"><a
+                                href="./idea.html" style="text-decoration: none; display: block;">بيشتر بدانيد</a>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Scandinavian Style -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card style-card border-0 rounded-4 p-4 h-100">
+                        <div class="text-center mb-4">
+                            <div class="fs-1">❄️</div>
+                            <h4 class="fw-bold text-ocean mt-3">اسکانديناوی</h4>
+                        </div>
+                        <div class="mb-4">
+                            <div class="d-flex align-items-center mb-2">
+                                <span class="bg-mint rounded-circle me-3" style="width: 12px; height: 12px;"></span>
+                                <span class="text-ocean opacity-75">سادگي و عملکرد</span>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+
+                                <span class="bg-mint rounded-circle me-3" style="width: 12px; height: 12px;"></span>
+                                <span class="text-ocean opacity-75">رنگ‌های روشن</span>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <span class="bg-mint rounded-circle me-3" style="width: 12px; height: 12px;"></span>
+                                <span class="text-ocean opacity-75">چوب طبيعی</span>
+                            </div>
+                        </div>
+                        <button class="btn bg-mint text-ocean rounded-pill w-100 fw-semibold mt-auto"><a
+                                href="./idea.html" style="text-decoration: none; display: block;">بيشتر بدانيد</a>
+                        </button>
+                    </div>
+                </div>
+                <!-- Industrial Style -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card style-card border-0 rounded-4 p-4 h-100">
+                        <div class="text-center mb-4">
+                            <div class="fs-1">🏭</div>
+                            <h4 class="fw-bold text-ocean mt-3">صنعتی</h4>
+                        </div>
+                        <div class="mb-4">
+                            <div class="d-flex align-items-center mb-2">
+                                <span class="bg-secondary rounded-circle me-3"
+                                    style="width: 12px; height: 12px;"></span>
+                                <span class="text-ocean opacity-75">فلز و آجر</span>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <span class="bg-secondary rounded-circle me-3"
+                                    style="width: 12px; height: 12px;"></span>
+                                <span class="text-ocean opacity-75">رنگ‌های تيره</span>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <span class="bg-secondary rounded-circle me-3"
+                                    style="width: 12px; height: 12px;"></span>
+                                <span class="text-ocean opacity-75">فضاهای باز</span>
+                            </div>
+                        </div>
+                        <button class="btn bg-mint text-ocean rounded-pill w-100 fw-semibold mt-auto"><a
+                                href="./idea.html" style="text-decoration: none; display: block;">بيشتر بدانيد</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-5">
+            <a href="./idea.html"><button class="btn btn-ocean btn-lg rounded-pill px-5">🎨 مشاهده همه</button></a>
+        </div>
+    </section>
+
+    <section id="rooms" class="py-5"
+        style="background: linear-gradient(135deg, rgba(205, 232, 229, 0.4) 0%, #EEF7FF 100%);">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-4 fw-bold text-ocean mb-4">💡 چند نمونه از ايده‌های اتاق </h2>
+                <p class="lead text-ocean opacity-75 mx-auto" style="max-width: 600px;">
+                    راهنمای کامل دکوراسیون هر فضا با نکات کاربردی
+                </p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="card room-card border-0 rounded-4 p-4 h-100">
+                        <div class="text-center mb-3">
+                            <div class="fs-1">🛋️</div>
+                            <h5 class="fw-bold text-ocean mt-3">سالن پذيرايي</h5>
+                            <p class="text-ocean opacity-75 small">۱۰+ ايده برای مهمان‌نوازی بهتر</p>
+                        </div>
+                        <div class="bg-mint bg-opacity-30 rounded-3 p-3 text-center mt-auto">
+                            <span class="text-ocean fw-semibold small"> <a href="./ideaLivingRoom.html"
+                                    style="text-decoration: none;display: block;">مشاهده ايده‌ها</a></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="card room-card border-0 rounded-4 p-4 h-100">
+                        <div class="text-center mb-3">
+                            <div class="fs-1">🍳</div>
+                            <h5 class="fw-bold text-ocean mt-3">آشپزخانه</h5>
+                            <p class="text-ocean opacity-75 small">۱۰+ ايده برای آشپزی راحت‌تر</p>
+                        </div>
+                        <div class="bg-teal bg-opacity-30 rounded-3 p-3 text-center mt-auto">
+                            <span class="text-ocean fw-semibold small"> <a href="./ideaKitchen.html"
+                                    style="text-decoration: none;display: block;">مشاهده ايده‌ها</a></span>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="card room-card border-0 rounded-4 p-4 h-100">
+                        <div class="text-center mb-3">
+                            <div class="fs-1">🛏️</div>
+                            <h5 class="fw-bold text-ocean mt-3">اتاق خواب</h5>
+                            <p class="text-ocean opacity-75 small">۱۰+ ايده برای خواب بهتر</p>
+                        </div>
+                        <div class="bg-mint bg-opacity-30 rounded-3 p-3 text-center mt-auto">
+                            <span class="text-ocean fw-semibold small"> <a href="./ideaBedRoom.html"
+                                    style="text-decoration: none;display: block;">مشاهده ايده‌ها</a></span>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="card room-card border-0 rounded-4 p-4 h-100">
+                        <div class="text-center mb-3">
+                            <div class="fs-1">🛁</div>
+                            <h5 class="fw-bold text-ocean mt-3">حمام</h5>
+                            <p class="text-ocean opacity-75 small">۱۰+ ايده برای آرامش بیشتر</p>
+                        </div>
+                        <div class="bg-ice rounded-3 p-3 text-center border border-2 mt-auto"
+                            style="border-color: var(--mint) !important;">
+                            <span class="text-ocean fw-semibold small"> <a href="./ideaBathRoom.html"
+                                    style="text-decoration: none;display: block;">مشاهده ايده‌ها</a></span>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-5">
+            <a href="./idea.html"><button class="btn btn-ocean btn-lg rounded-pill px-5">🎨 مشاهده همه</button></a>
+        </div>
+    </section>
+
+    <section id="trends" class="py-5 bg-white">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-4 fw-bold text-ocean mb-4">🔥 ترندهای ۲۰۲۵</h2>
+                <p class="lead text-ocean opacity-75 mx-auto" style="max-width: 600px;">
+                    آخرين مدهای دکوراسيون که بايد بدانيد
+                </p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card hover-lift border-0 rounded-4 p-4 h-100"
+                        style="background: linear-gradient(135deg, rgba(205, 232, 229, 0.5) 0%, rgba(122, 178, 178, 0.3) 100%);">
+                        <div class="d-flex align-items-center mb-4">
+                            <span class="fs-2 me-3">🌱</span>
+                            <h4 class="fw-bold text-ocean mb-0">گياهان داخلی</h4>
+                        </div>
+                        <p class="text-ocean opacity-75 mb-4" style="font-size: 15px;">استفاده از گياهان برای تصفيه هوا
+                            و ايجاد حس طبيعی در خانه</p>
+                        <div class="bg-white bg-opacity-50 rounded-3 p-3">
+                            <span class="text-ocean fw-semibold">💡 نکته:</span>
+                            <span class="text-ocean opacity-75"> گياهان کم نور برای تازه‌کارها</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card hover-lift border-0 rounded-4 p-4 h-100"
+                        style="background: linear-gradient(135deg, rgba(122, 178, 178, 0.5) 0%, rgba(77, 134, 156, 0.3) 100%);">
+                        <div class="d-flex align-items-center mb-4">
+                            <span class="fs-2 me-3">🎨</span>
+                            <h4 class="fw-bold text-ocean mb-0">ديوارهای رنگی</h4>
+                        </div>
+                        <p class="text-ocean opacity-75 mb-4">جرات استفاده از رنگ‌های پررنگ و جسورانه در دکوراسيون</p>
+                        <div class="bg-white bg-opacity-50 rounded-3 p-3">
+                            <span class="text-ocean fw-semibold">💡 نکته:</span>
+                            <span class="text-ocean opacity-75"> يک ديوار تاکيدی کافي است</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card hover-lift border-0 rounded-4 p-4 h-100"
+                        style="background: linear-gradient(135deg, rgba(77, 134, 156, 0.5) 0%, rgba(205, 232, 229, 0.3) 100%);">
+
+                        <div class="d-flex align-items-center mb-4">
+                            <span class="fs-2 me-3">♻️</span>
+                            <h4 class="fw-bold text-ocean mb-0">دکور پايدار</h4>
+                        </div>
+                        <p class="text-ocean opacity-75 mb-4">استفاده از مواد بازيافتي و طبيعی برای محيط زيست</p>
+                        <div class="bg-white bg-opacity-50 rounded-3 p-3">
+                            <span class="text-ocean fw-semibold">💡 نکته:</span>
+                            <span class="text-ocean opacity-75"> چوب بازيافتی برای مبلمان</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <!-- <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+
+
+                <div class="col-lg-3 col-md-6">
+                    <h6 class="fw-semibold mb-4">دسته‌بندی‌ها</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="./idea.html" class="text-light opacity-75 text-decoration-none">انواع
+                                سبک‌ها</a></li>
+                        <li class="mb-2"><a href="./DecorSolution.html"
+                                class="text-light opacity-75 text-decoration-none">ايده‌های کوتاه</a></li>
+                        <li class="mb-2"><a href="./Articles.html"
+                                class="text-light opacity-75 text-decoration-none">مقالات</a></li>
+                        <li class="mb-2"><a href="./Color.html" class="text-light opacity-75 text-decoration-none">رنگ
+                                ها</a></li>
+                    </ul>
+                </div>
+
+                <h4
+                    style="font-size: 5rem; padding-top: 32px; margin-right: 80%; position: absolute; bottom: -477%; left: -70%;">
+                    Decorino</h4>
+            </div>
+            <hr class="my-4 opacity-25">
+            <div class="text-center text-light opacity-75">
+                <p class="mb-0"> دکورينو 🏠</p>
+            </div>
+        </div>
+    </footer> -->
+    <script src="./bootstrap/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

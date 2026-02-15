@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decorino</title>
+    <style>
+        body {
+            background-color: #eef7ff;
+            font-family: "Tahoma", sans-serif;
+            line-height: 1.9px;
+        }
+
+        .article-header {
+            background-color: #4d869c;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+        }
+
+        .article-header h1 {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .article-content {
+            background-color: #cde8e5;
+            padding: 30px;
+            margin-top: -30px;
+            border-radius: 20px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .article-img {
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        .btn-back {
+            background-color: #7ab2b2;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn-back:hover {
+            background-color: #4d869c;
+            color: white;
+        }
+
+        .menu-container {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+
+        .menu-toggle {
+            display: none;
+        }
+
+        .menu-button {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #7AB2B2, #4D869C);
+            border: 3px solid #CDE8E5;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 20px rgba(77, 134, 156, 0.4);
+            transition: all 0.3s ease;
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .menu-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(77, 134, 156, 0.5);
+        }
+
+        .menu-button::before {
+            content: '☰';
+            transition: all 0.3s ease;
+        }
+
+        .menu-items {
+            position: absolute;
+            top: 75px;
+            left: 0;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            border: 2px solid #CDE8E5;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-20px);
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle:checked~.menu-items {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .menu-item {
+            display: block;
+            padding: 15px 25px;
+            background: #EEF7FF;
+            border-bottom: 1px solid #CDE8E5;
+            text-decoration: none;
+            color: #4D869C;
+            font-weight: 600;
+            text-align: center;
+            min-width: 130px;
+            transition: all 0.2s ease;
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .menu-item:hover {
+            background: #CDE8E5;
+            color: #4D869C;
+            transform: translateX(3px);
+        }
+
+      
+    </style>
+    <link rel="stylesheet" href="./bootstrap/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="menu-container">
+        <input type="checkbox" id="menuToggle" class="menu-toggle">
+        <label for="menuToggle" class="menu-button" style="padding: 0%;"></label>
+        <div class="menu-items">
+            <a href="./khane.html" class="menu-item">خانه</a>
+            <a href="./idea.html" class="menu-item">انواع سبک </a>
+            <a href="./DecorSolution.html" class="menu-item">ايده کوتاه</a>
+            <a href="./Articles.html" class="menu-item"> مقالات </a>
+            <a href="./Color.html" class="menu-item"> رنگ ها </a>
+
+        </div>
+    </div>
+
+  
+
+
+
+    <div class="article-header">
+        <h1>جديدترين ترند رنگ ها در دکوراسيون ۲۰۲۵</h1>
+        <p>رنگ هاي به روز و جذاب براي خانه هاي مدرن</p>
+    </div>
+
+
+
+    <div class="container my-5">
+        <div class="article-content">
+            <img src="./Articles/3.jpeg" alt="ترند رنگ دکوراسيون" class="img-fluid article-img">
+
+
+            <p>در سال ۲۰۲۵، رنگ‌ها نقش اصلی در جذابیت و حس خانه دارند.
+                انتخاب درست رنگ‌ها می‌تواند فضا را تازه و زنده کند.</p>
+
+            <h4>۱. پالت‌های آرامش‌بخش</h4>
+
+            <p>رنگ‌های پاستلی و ملایم مانند سبز روشن،
+                آبی و کرم به عنوان رنگ اصلی سال شناخته شده‌اند.
+                این رنگ‌ها حس آرامش و دلبازی ایجاد می‌کنند.</p>
+
+            <h4>۲. ترکیب رنگ‌های متضاد</h4>
+
+            <p>استفاده از ترکیب رنگ‌های متضاد و جذاب،
+                مثل آبی و نارنجی ملایم، باعث ایجاد کنتراست و جذابیت بیشتر می‌شود.
+                اما دقت کنید که تعادل رعایت شود.</p>
+
+            <h4>۳. رنگ‌های خاکی و طبیعی</h4>
+
+            <p>رنگ‌های خاکی و طبیعی مثل بژ، کرم
+                و قهوه‌ای روشن در کنار چوب و گیاهان طبیعی،
+                فضا را گرم و صمیمی نشان می‌دهند.</p>
+
+            <h4>۴. تاکید بر جزئیات رنگی</h4>
+
+            <p>استفاده از کوسن، تابلو و فرش با رنگ‌های جسورانه می‌تواند فضا
+                را جذاب‌تر کند بدون اینکه دیوارها یا مبلمان اصلی را تغییر دهید.
+            </p>
+
+            <h4>۵. رنگ‌های براق و بازتاب نور</h4>
+
+            <p>کمی از رنگ‌های براق و بازتابنده نور در آشپزخانه یا
+                اتاق پذیرایی باعث روشن‌تر و دلبازتر دیده شدن فضا می‌شود.</p>
+
+
+            <div class="text-center mt-4">
+                <a href="Articles.html" class="btn-back">بازگشت به مقالات</a>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="./bootstrap/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

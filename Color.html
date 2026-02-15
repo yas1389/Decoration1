@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decorino</title>
+    <style>
+        body {
+            font-family: Tahoma, sans-serif;
+            background-color: #eef7ff;
+            color: #4d869c;
+            direction: rtl;
+            line-height: 1.6px;
+        }
+
+        .section {
+            padding: 60px 20px;
+            margin-bottom: 50px;
+            border-radius: 20px;
+        }
+
+        .section-title {
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .color-box {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            margin: 10px;
+            border: 2px solid #4d869c;
+            display: inline-block;
+        }
+
+        .color-name {
+            text-align: center;
+            margin-top: 5px;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .palette-box {
+            border: 2px solid #4d869c;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0px;
+            background-color: #eef7ff;
+            transition: transform 0.3s ease;
+        }
+
+        .palette-box:hover {
+            transform: scale(1.05);
+        }
+
+        .guide-list li {
+            margin-bottom: 10px;
+        }
+
+        .trend-box {
+            width: 100px;
+            height: 100px;
+            border-radius: 12px;
+            margin: 10px;
+            display: inline-block;
+            border: 2px solid #4d869c;
+            text-align: center;
+            line-height: 100px;
+            font-weight: bold;
+            color: #fff;
+            font-size: 0.9rem;
+        }
+
+        .image-card {
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .image-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .image-card img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+
+
+        .menu-container {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+
+        .menu-toggle {
+            display: none;
+        }
+
+        .menu-button {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #7AB2B2, #4D869C);
+            border: 3px solid #CDE8E5;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 20px rgba(77, 134, 156, 0.4);
+            transition: all 0.3s ease;
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .menu-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(77, 134, 156, 0.5);
+        }
+
+        .menu-button::before {
+            content: '☰';
+            transition: all 0.3s ease;
+        }
+
+        .menu-items {
+            position: absolute;
+            top: 75px;
+            left: 0;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            border: 2px solid #CDE8E5;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-20px);
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle:checked~.menu-items {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .menu-item {
+            display: block;
+            padding: 15px 25px;
+            background: #EEF7FF;
+            border-bottom: 1px solid #CDE8E5;
+            text-decoration: none;
+            color: #4D869C;
+            font-weight: 600;
+            text-align: center;
+            min-width: 130px;
+            transition: all 0.2s ease;
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .menu-item:hover {
+            background: #CDE8E5;
+            color: #4D869C;
+            transform: translateX(3px);
+        }
+
+        .back {
+            width: 50px;
+            height: 50px;
+            background-color: #4D869C;
+            border-radius: 100%;
+            position: fixed;
+            top: 3%;
+            right: 1%;
+            text-align: center;
+            padding-top: 10px;
+            color: white;
+            box-shadow: 0 5px 20px rgba(77, 134, 156, 0.4);
+            border: 3px solid #CDE8E5;
+            transition: all 0.3s ease;
+            font-size: 14px;
+
+        }
+
+        .back:hover {
+            box-shadow: 0 8px 25px rgba(77, 134, 156, 0.5);
+            transform: translateX(3px);
+
+
+        }
+    </style>
+    <link rel="stylesheet" href="./bootstrap/bootstrap.min.css">
+</head>
+
+<body>
+
+    <div class="menu-container">
+        <input type="checkbox" id="menuToggle" class="menu-toggle">
+        <label for="menuToggle" class="menu-button"></label>
+        <div class="menu-items">
+            <a href="./khane.html" class="menu-item">خانه</a>
+            <a href="./idea.html" class="menu-item">انواع سبک</a>
+            <a href="./DecorSolution.html" class="menu-item">ايده کوتاه</a>
+            <a href="./Articles.html" class="menu-item"> مقالات </a>
+            <a href="./Color.html" class="menu-item"> رنگ ها </a>
+
+        </div>
+    </div>
+
+    <a href="./khane.html">
+        <div class="back">برگشت</div>
+    </a>
+
+
+    <div class="container">
+        <div class="section" style="background-color: #cde8e5;">
+            <h2 class="section-title">معرفي رنگ هاي محبوب براي دکوراسيون</h2>
+            <div class="row text-center">
+
+
+
+                <div class="col-md-3 mb-4">
+                    <div class="color-box" style="background-color: #FDFDFD;"></div>
+                    <div class="color-name" style="margin-top:-12PX;">مرمري سفيد کريستالي</div>
+                    <p>لوکس و روشن</p>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <div class="color-box" style="background-color: #B0B0B0;"></div>
+                    <div class="color-name" style="margin-top:-12PX;">طوسي بتني مات</div>
+                    <p>مدرن و صنعتي</p>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <div class="color-box" style="background-color: #a0856a;"></div>
+                    <div class="color-name" style="margin-top:-12PX;">گريژ</div>
+                    <p>آرامش بخش</p>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <div class="color-box" style="background-color: #E0DDD6;"></div>
+                    <div class="color-name" style="margin-top:-12PX;">لايمستون</div>
+                    <p>حس پاکيزگي و فضا باز</p>
+                </div>
+
+
+                <div class="col-md-3 mb-4">
+                    <div class="color-box" style="background-color: #F7EFE2;"></div>
+                    <div class="color-name" style="margin-top:-12PX;">آلورا مرمرين</div>
+                    <p>لوکس و روشن</p>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <div class="color-box" style="background-color: #CBD2C0;"></div>
+                    <div class="color-name" style="margin-top:-12PX;">سايلن شمير</div>
+                    <p>حس تعادل و طراوت</p>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <div class="color-box" style="background-color: #E8D6E8;"></div>
+                    <div class="color-name" style="margin-top:-12PX;">لوتوس نوارا</div>
+                    <p>رمانتيک و لطيف</p>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <div class="color-box" style="background-color: #E4C9B5;"></div>
+                    <div class="color-name" style="margin-top:-12PX;">اورينت لومينا</div>
+                    <p>حس راحتي و شکوه طبيعي</p>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <div class="color-box" style="background-color: #F5EBDD;"></div>
+                    <div class="color-name" style="margin-top:-12PX;">لارا بژ روشن</div>
+                    <p>شيک و ملايم</p>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <div class="color-box" style="background-color: #F3E5AB;"></div>
+                    <div class="color-name" style="margin-top:-12PX;">وانيلي</div>
+                    <p>آرامش و لطافت</p>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <div class="color-box" style="background-color: #D6BFA9;"></div>
+                    <div class="color-name" style="margin-top:-12PX;">وانيلا لاته</div>
+                    <p>حس راحتي و لوکس بودن</p>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <div class="color-box" style="background-color: #FFFACD;"></div>
+                    <div class="color-name" style="margin-top:-12PX;">زرد کم رنگ</div>
+                    <p>روشنايي و انرژي مثبت</p>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <div class="color-box" style="background-color: #BFC1C2;"></div>
+                    <div class="color-name" style="margin-top:-12PX;">نقره ای متاليک</div>
+                    <p>لوکس و مدرن</p>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <div class="color-box" style="background-color: #D9B382;"></div>
+                    <div class="color-name" style="margin-top:-12PX;">بژ کاراملي</div>
+                    <p>گرما و راحتي</p>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <div class="color-box" style="background-color: #DDEDE1;"></div>
+                    <div class="color-name" style="margin-top:-12PX;">مريلا پاستل</div>
+                    <p>حس طبيعت و آرامش</p>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <div class="color-box" style="background-color: #F4E6D3;"></div>
+                    <div class="color-name" style="margin-top:-12PX;">آلتيرا شامپايني</div>
+                    <p>لوکس و راحتي</p>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <div class="color-box" style="background-color: #E3DAC9;"></div>
+                    <div class="color-name" style="margin-top:-12PX;">استخواني</div>
+                    <p>روشن و مدرن</p>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <div class="color-box" style="background-color: #F2EDE6;"></div>
+                    <div class="color-name" style="margin-top:-12PX;">آلورا لايت</div>
+                    <p>روشن و ملايم</p>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <div class="color-box" style="background-color: #D6D6D6;"></div>
+                    <div class="color-name" style="margin-top:-12PX;">فيلي روشن</div>
+                    <p>مدرن و خنثي</p>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <div class="color-box" style="background-color: #F5E6D3;"></div>
+                    <div class="color-name" style="margin-top:-12PX;">بژ روشن</div>
+                    <p>گرم و راحت</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="section" style="background-color: #eef7ff;">
+            <h2 class="section-title">پالت هاي آماده محبوب</h2>
+            <div class="row">
+
+
+                <div class="col-md-3 mb-3">
+                    <div class="palette-box">
+                        <div class="d-flex justify-content-center">
+                            <div class="color-box" style="background-color: #fdfbfb"></div>
+                            <div class="color-box" style="background-color: #f1e9df"></div>
+                            <div class="color-box" style="background-color: #eadfcf"></div>
+                            <div class="color-box" style="background-color: #beb6aa"></div>
+                        </div>
+                        <p style="text-align: center;">پالت1</p>
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-3 mb-3">
+                    <div class="palette-box">
+                        <div class="d-flex justify-content-center">
+                            <div class="color-box" style="background-color: #ffffff"></div>
+                            <div class="color-box" style="background-color: #e5e5e5"></div>
+                            <div class="color-box" style="background-color: #b3b3b3"></div>
+                            <div class="color-box" style="background-color: #1e1e1e"></div>
+                        </div>
+                        <p style="text-align: center;">پالت1</p>
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-3 mb-3">
+                    <div class="palette-box">
+                        <div class="d-flex justify-content-center">
+                            <div class="color-box" style="background-color: #fafaf7"></div>
+                            <div class="color-box" style="background-color: #d6d7d9"></div>
+                            <div class="color-box" style="background-color: #dbd3c8"></div>
+                            <div class="color-box" style="background-color: #dcccb4"></div>
+                        </div>
+                        <p style="text-align: center;">پالت1</p>
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-3 mb-3">
+                    <div class="palette-box">
+                        <div class="d-flex justify-content-center">
+                            <div class="color-box" style="background-color: #cde3ee"></div>
+                            <div class="color-box" style="background-color: #faf9f7"></div>
+                            <div class="color-box" style="background-color: #eadfcf"></div>
+                            <div class="color-box" style="background-color: #c1b8aa"></div>
+                        </div>
+                        <p style="text-align: center;">پالت1</p>
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-3 mb-3">
+                    <div class="palette-box">
+                        <div class="d-flex justify-content-center">
+                            <div class="color-box" style="background-color: #fffefa"></div>
+                            <div class="color-box" style="background-color: #f4eee2"></div>
+                            <div class="color-box" style="background-color: #d9c18c"></div>
+                            <div class="color-box" style="background-color: #1c1c1c"></div>
+                        </div>
+                        <p style="text-align: center;">پالت1</p>
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-3 mb-3">
+                    <div class="palette-box">
+                        <div class="d-flex justify-content-center">
+                            <div class="color-box" style="background-color: #ffffff"></div>
+                            <div class="color-box" style="background-color: #4a6a5a"></div>
+                            <div class="color-box" style="background-color: #8e8e89"></div>
+                            <div class="color-box" style="background-color: #d8c3a5"></div>
+                        </div>
+                        <p style="text-align: center;">پالت1</p>
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-3 mb-3">
+                    <div class="palette-box">
+                        <div class="d-flex justify-content-center">
+                            <div class="color-box" style="background-color: #fbfaf5"></div>
+                            <div class="color-box" style="background-color: #fbeed6"></div>
+                            <div class="color-box" style="background-color: #dfc9a7"></div>
+                            <div class="color-box" style="background-color: #a89c8c"></div>
+                        </div>
+                        <p style="text-align: center;">پالت1</p>
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-3 mb-3">
+                    <div class="palette-box">
+                        <div class="d-flex justify-content-center">
+                            <div class="color-box" style="background-color: #ffffff"></div>
+                            <div class="color-box" style="background-color: #c0c7cc"></div>
+                            <div class="color-box" style="background-color: #e6e8eb"></div>
+                            <div class="color-box" style="background-color: #1f1f1f"></div>
+                        </div>
+                        <p style="text-align: center;">پالت1</p>
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-3 mb-3">
+                    <div class="palette-box">
+                        <div class="d-flex justify-content-center">
+                            <div class="color-box" style="background-color: #fafdfc"></div>
+                            <div class="color-box" style="background-color: #dceef5"></div>
+                            <div class="color-box" style="background-color: #a1a782"></div>
+                            <div class="color-box" style="background-color: #e6d9c7"></div>
+                        </div>
+                        <p style="text-align: center;">پالت1</p>
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-3 mb-3">
+                    <div class="palette-box">
+                        <div class="d-flex justify-content-center">
+                            <div class="color-box" style="background-color: #fbfbfa"></div>
+                            <div class="color-box" style="background-color: #efe6da"></div>
+                            <div class="color-box" style="background-color: #d9c9b8"></div>
+                            <div class="color-box" style="background-color: #b5afa5"></div>
+                        </div>
+                        <p style="text-align: center;">پالت1</p>
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-3 mb-3">
+                    <div class="palette-box">
+                        <div class="d-flex justify-content-center">
+                            <div class="color-box" style="background-color: #ffffff"></div>
+                            <div class="color-box" style="background-color: #e0e0e0"></div>
+                            <div class="color-box" style="background-color: #5c5c5c"></div>
+                            <div class="color-box" style="background-color: #000000"></div>
+                        </div>
+                        <p style="text-align: center;">پالت1</p>
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-3 mb-3">
+                    <div class="palette-box">
+                        <div class="d-flex justify-content-center">
+                            <div class="color-box" style="background-color: #fffdf8"></div>
+                            <div class="color-box" style="background-color: #f3e8d7"></div>
+                            <div class="color-box" style="background-color: #d9bfa7"></div>
+                            <div class="color-box" style="background-color: #a47149"></div>
+                        </div>
+                        <p style="text-align: center;">پالت1</p>
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-3 mb-3">
+                    <div class="palette-box">
+                        <div class="d-flex justify-content-center">
+                            <div class="color-box" style="background-color: #faf7f2"></div>
+                            <div class="color-box" style="background-color: #788c6f"></div>
+                            <div class="color-box" style="background-color: #7b6355"></div>
+                            <div class="color-box" style="background-color: #efe6dd"></div>
+                        </div>
+                        <p style="text-align: center;">پالت1</p>
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-3 mb-3">
+                    <div class="palette-box">
+                        <div class="d-flex justify-content-center">
+                            <div class="color-box" style="background-color: #fbf9f8"></div>
+                            <div class="color-box" style="background-color: #e7c3c1"></div>
+                            <div class="color-box" style="background-color: #d19a94"></div>
+                            <div class="color-box" style="background-color: #c0c7cc"></div>
+                        </div>
+                        <p style="text-align: center;">پالت1</p>
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-3 mb-3">
+                    <div class="palette-box">
+                        <div class="d-flex justify-content-center">
+                            <div class="color-box" style="background-color: #f8fbff"></div>
+                            <div class="color-box" style="background-color: #d6e2e9"></div>
+                            <div class="color-box" style="background-color: #7d8896"></div>
+                            <div class="color-box" style="background-color: #23292e"></div>
+                        </div>
+                        <p style="text-align: center;">پالت1</p>
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-3 mb-3">
+                    <div class="palette-box">
+                        <div class="d-flex justify-content-center">
+                            <div class="color-box" style="background-color: #fbfaf6"></div>
+                            <div class="color-box" style="background-color: #ece3d3"></div>
+                            <div class="color-box" style="background-color: #dfc9a7"></div>
+                            <div class="color-box" style="background-color: #c1b8aa"></div>
+                        </div>
+                        <p style="text-align: center;">پالت1</p>
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-3 mb-3">
+                    <div class="palette-box">
+                        <div class="d-flex justify-content-center">
+                            <div class="color-box" style="background-color: #ffffff"></div>
+                            <div class="color-box" style="background-color: #e8e8e8"></div>
+                            <div class="color-box" style="background-color: #e5d2b5"></div>
+                            <div class="color-box" style="background-color: #1e1e1e"></div>
+                        </div>
+                        <p style="text-align: center;">پالت1</p>
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-3 mb-3">
+                    <div class="palette-box">
+                        <div class="d-flex justify-content-center">
+                            <div class="color-box" style="background-color: #fdfbf6"></div>
+                            <div class="color-box" style="background-color: #e4cda6"></div>
+                            <div class="color-box" style="background-color: #fbcc80"></div>
+                            <div class="color-box" style="background-color: #7c5c42"></div>
+                        </div>
+                        <p style="text-align: center;">پالت1</p>
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-3 mb-3">
+                    <div class="palette-box">
+                        <div class="d-flex justify-content-center">
+                            <div class="color-box" style="background-color: #f4efe8"></div>
+                            <div class="color-box" style="background-color: #c8e4eb"></div>
+                            <div class="color-box" style="background-color: #c9e3d0"></div>
+                            <div class="color-box" style="background-color: #ede5d8"></div>
+                        </div>
+                        <p style="text-align: center;">پالت1</p>
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-3 mb-3">
+                    <div class="palette-box">
+                        <div class="d-flex justify-content-center">
+                            <div class="color-box" style="background-color: #fafafa"></div>
+                            <div class="color-box" style="background-color: #d3d5d4"></div>
+                            <div class="color-box" style="background-color: #e9ddcc"></div>
+                            <div class="color-box" style="background-color: #cfc4b5"></div>
+                        </div>
+                        <p style="text-align: center;">پالت1</p>
+                    </div>
+                </div>
+
+
+                <div class="section" style="background-color: #7ab2b2; color: #eef7ff;">
+                    <h2 class="section-title">راهنماي انتخاب رنگ</h2>
+                    <ul style="line-height: 1.9;">
+                        <li>برای اتاق‌های کوچک از رنگ روشن استفاده کنید تا فضا بازتر به نظر برسد.</li>
+                        <li>رنگ‌های تیره برای دیوارهای اصلی و تاکید در مبلمان مناسب است.</li>
+                        <li>ترکیب فیروزه‌ای با سفید و آبی روشن حس آرامش و تعادل ایجاد می‌کند.</li>
+                        <li>رنگ‌های سرد برای محیط‌های کاری و مطالعه مناسب‌تر هستند.</li>
+                        <li>برای ایجاد حس انرژی و گرما، از رنگ‌های روشن و مکمل در جزئیات استفاده کنید.</li>
+                        <li>ترکیب آبی روشن و سفید باعث حس فضای باز می‌شود.</li>
+                        <li>فیروزه‌ای با چوب طبیعی بسیار زیباست.</li>
+                        <li>آبی تیره برای فضاهای رسمی و کاری مناسب است.</li>
+                        <li>رنگ روشن دیوارها نور را منعکس می‌کند.</li>
+                        <li>رنگ‌های مکمل در کوسن‌ها و پرده‌ها جلوه ایجاد می‌کنند.</li>
+                        <li>استفاده از رنگ‌های مشابه در دکور احساس هماهنگی ایجاد می‌کند.</li>
+                        <li>رنگ‌های خنثی با رنگ‌های اصلی تعادل ایجاد می‌کنند.</li>
+                        <li>ترکیب سفید با فیروزه‌ای حس مدرن می‌دهد.</li>
+                        <li>استفاده از رنگ‌های تیره در کف مناسب است.</li>
+                        <li>رنگ‌های شاد برای اتاق کودک عالی هستند.</li>
+                        <li>رنگ‌های روشن سقف را بلندتر نشان می‌دهند.</li>
+                        <li>رنگ‌های سرد آرام‌بخش و رنگ‌های گرم انرژی‌بخش هستند.</li>
+                        <li>ترکیب آبی و سبز حس طبیعت می‌دهد.</li>
+                        <li>رنگ‌های متضاد توجه را جلب می‌کنند.</li>
+                        <li>استفاده از رنگ‌های مشابه در بافت‌ها زیبایی ایجاد می‌کند.</li>
+                    </ul>
+                </div>
+
+
+                <div class="section" style="background-color: #cde8e5;">
+                    <h2 class="section-title">ترند هاي رنگي سال 2025</h2>
+                    <div class="d-flex justify-content-center flex-wrap">
+
+
+
+                        <div class="trend-box" style="background-color: #d9c5b2">
+                            <p style="color: black;">روشن خاکي</p>
+                        </div>
+
+
+                        <div class="trend-box" style="background-color: #9caf88">
+                            <p style="color: black;">سبز سيج</p>
+                        </div>
+
+
+                        <div class="trend-box" style="background-color: #a3c4dc">
+                            <p style="color: black;">آبي پاستل</p>
+                        </div>
+
+
+                        <div class="trend-box" style="background-color: #f3e5c9">
+                            <p style="color: black;">کرمي و وانيلي</p>
+                        </div>
+
+
+                        <div class="trend-box" style="background-color: #c68642">
+                            <p style="color: black;">قهوه ای کاراملي</p>
+                        </div>
+
+
+                        <div class="trend-box" style="background-color: #f4c6c6">
+                            <p style="color: black;">صورتي پودري</p>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="./bootstrap/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Decorino</title>
+  <style>
+    body {
+      background: #EEF7FF;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 50px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 50px;
+      color: #4D869C;
+    }
+
+    .cards-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .card-custom {
+      width: 250px;
+      height: 350px;
+      perspective: 1000px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+
+    .card-custom:hover .card-inner {
+      transform: rotateY(180deg) scale(1.05);
+    }
+
+    .card-front,
+    .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 20px;
+      backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.2rem;
+      text-align: center;
+      padding: 20px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-front {
+      background: linear-gradient(135deg, #CDE8E5, #7AB2B2);
+    }
+
+    .card-back {
+      background: linear-gradient(135deg, #4D869C, #CDE8E5);
+      transform: rotateY(180deg);
+      position: relative;
+    }
+
+    .card-back p {
+      font-size: 1rem;
+      margin-bottom: 15px;
+    }
+
+    .card-back a {
+      display: inline-block;
+      padding: 10px 15px;
+      background-color: #EEF7FF;
+      color: #4D869C;
+      font-weight: bold;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .card-back a:hover {
+      background-color: #7AB2B2;
+      color: #fff;
+    }
+
+
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .cards-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+
+    .menu-container {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1000;
+    }
+
+    .menu-toggle {
+      display: none;
+    }
+
+    .menu-button {
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #7AB2B2, #4D869C);
+      border: 3px solid #CDE8E5;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 5px 20px rgba(77, 134, 156, 0.4);
+      transition: all 0.3s ease;
+      color: white;
+      font-size: 22px;
+      font-weight: bold;
+      position: relative;
+    }
+
+    .menu-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px rgba(77, 134, 156, 0.5);
+    }
+
+    .menu-button::before {
+      content: '☰';
+      transition: all 0.3s ease;
+    }
+
+    .menu-items {
+      position: absolute;
+      top: 75px;
+      left: 0;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      border: 2px solid #CDE8E5;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-20px);
+      transition: all 0.3s ease;
+    }
+
+    .menu-toggle:checked~.menu-items {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .menu-item {
+      display: block;
+      padding: 15px 25px;
+      background: #EEF7FF;
+      border-bottom: 1px solid #CDE8E5;
+      text-decoration: none;
+      color: #4D869C;
+      font-weight: 600;
+      text-align: center;
+      min-width: 130px;
+      transition: all 0.2s ease;
+    }
+
+    .menu-item:last-child {
+      border-bottom: none;
+    }
+
+    .menu-item:hover {
+      background: #CDE8E5;
+      color: #4D869C;
+      transform: translateX(3px);
+    }
+
+
+    .back {
+      width: 50px;
+      height: 50px;
+      background-color: #4D869C;
+      border-radius: 50%;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* text-align: center; */
+      /* padding-top: 10px; */
+      color: white;
+      font-size: 12px;
+      box-shadow: 0 5px 20px rgba(77, 134, 156, 0.4);
+      border: 3px solid #CDE8E5;
+      text-decoration: none;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    
+    @media (max-width: 576px) {
+      .back {
+        width: 40px;
+        height: 40px;
+        font-size: 10px;
+        top: 15px;
+        right: 15px;
+      }
+    }
+
+    .back:hover {
+      box-shadow: 0 8px 25px rgba(77, 134, 156, 0.5);
+      transform: translateX(3px);
+
+
+    }
+  </style>
+  <link href="./bootstrap/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="menu-container">
+    <input type="checkbox" id="menuToggle" class="menu-toggle">
+    <label for="menuToggle" class="menu-button"></label>
+    <div class="menu-items">
+      <a href="./khane.html" class="menu-item">خانه</a>
+      <a href="./idea.html" class="menu-item">انواع سبک</a>
+      <a href="./DecorSolution.html" class="menu-item">ايده کوتاه</a>
+      <a href="./Articles.html" class="menu-item"> مقالات </a>
+      <a href="./Color.html" class="menu-item"> رنگ ها </a>
+
+    </div>
+  </div>
+
+  <a href="./khane.html">
+    <div class="back">برگشت</div>
+  </a>
+
+
+  <a href="./khane.html" class="text-decoration-none" style="color: black;"><h1> دکورينو ✨</h1></a>
+
+  <div class="cards-container">
+
+    <div class="card-custom">
+      <div class="card-inner">
+        <div class="card-front">کارت ۱<br>ایده روشن</div>
+        <div class="card-back">
+          <p>يک ايده روشن که همه چيز را تغيير مي دهد...کشفش کن!</p>
+          <a href="./Slider1,1.html">کلیک کن!</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-custom">
+      <div class="card-inner">
+        <div class="card-front">کارت ۲<br>طراحی مدرن</div>
+        <div class="card-back">
+          <p>طراحي مدرني که چشم ها را مجذوب خودش مي کند...ببينش!</p>
+          <a href="./Slider1,2.html">کلیک کن!</a>
+        </div>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="card-custom">
+      <div class="card-inner">
+        <div class="card-front">کارت ۳<br>هنر و الگو</div>
+        <div class="card-back">
+          <p>ترکيبي جادويي از هنر و الگو که ذهن را شگفت زده مي کند...امتحانش کن!</p>
+          <a href="./Slider1,3.html">کلیک کن!</a>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="card-custom">
+      <div class="card-inner">
+        <div class="card-front">کارت ۴<br>طبیعت و آرامش</div>
+        <div class="card-back">
+          <p>يک گوشه از طبيعت و آرامش که قلبت را آرام مي کند...تجربه کن!</p>
+          <a href="./Slider1,4.html">کلیک کن!</a>
+        </div>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="card-custom">
+      <div class="card-inner">
+        <div class="card-front">کارت ۵<br>مخصوص دکورينو</div>
+        <div class="card-back">
+          <p>جادوي دکورينو که خانه ات را به فضايي رويايي تبديل مي کند...بيا کشفش کن!</p>
+          <a href="./Slider1,5.html">کلیک کن!</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-custom">
+      <div class="card-inner">
+        <div class="card-front">کارت ۶<br>سبک شخصی</div>
+        <div class="card-back">
+          <p>سبکي که فقط براي توست و منحصر به فرد...ببينش!</p>
+          <a href="./Slider1,6.html">کلیک کن!</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br>
+
+  <script src="./bootstrap/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

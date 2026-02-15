@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+  content="width=device-width,
+  initial-scale=1.0">
+  <title>Decorino</title>
+  <style>
+    body {
+      background: #EEF7FF;
+      font-family: 'Vazirmatn', sans-serif;
+    }
+
+    h2 {
+      color: #4D869C;
+      font-weight: bold;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      border-radius: 18px;
+      background: #CDE8E5;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      transition: all 0.4s ease;
+      border: none;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+    }
+
+    .card img {
+      height: 190px;
+      object-fit: cover;
+      border-bottom: 5px solid #7AB2B2;
+    }
+
+    .card-body {
+      background: #EEF7FF;
+      padding: 18px;
+      border-radius: 0 0 18px 18px;
+    }
+
+    .card-title {
+      color: #4D869C;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .card-text {
+      color: #333;
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+    }
+
+    .tagline {
+      color: #7AB2B2;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+
+
+    .menu-container {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1000;
+    }
+
+    .menu-toggle {
+      display: none;
+    }
+
+    .menu-button {
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #7AB2B2, #4D869C);
+      border: 3px solid #CDE8E5;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 5px 20px rgba(77, 134, 156, 0.4);
+      transition: all 0.3s ease;
+      color: white;
+      font-size: 22px;
+      font-weight: bold;
+      position: relative;
+    }
+
+    .menu-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px rgba(77, 134, 156, 0.5);
+    }
+
+    .menu-button::before {
+      content: '☰';
+      transition: all 0.3s ease;
+    }
+
+    .menu-items {
+      position: absolute;
+      top: 75px;
+      left: 0;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      border: 2px solid #CDE8E5;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-20px);
+      transition: all 0.3s ease;
+    }
+
+    .menu-toggle:checked~.menu-items {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .menu-item {
+      display: block;
+      padding: 15px 25px;
+      background: #EEF7FF;
+      border-bottom: 1px solid #CDE8E5;
+      text-decoration: none;
+      color: #4D869C;
+      font-weight: 600;
+      text-align: center;
+      min-width: 130px;
+      transition: all 0.2s ease;
+    }
+
+    .menu-item:last-child {
+      border-bottom: none;
+    }
+
+    .menu-item:hover {
+      background: #CDE8E5;
+      color: #4D869C;
+      transform: translateX(3px);
+    }
+
+
+
+   .back {
+      width: 50px;
+      height: 50px;
+      background-color: #4D869C;
+      border-radius: 50%;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* text-align: center; */
+      /* padding-top: 10px; */
+      color: white;
+      font-size: 12px;
+      box-shadow: 0 5px 20px rgba(77, 134, 156, 0.4);
+      border: 3px solid #CDE8E5;
+      text-decoration: none;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    
+    @media (max-width: 576px) {
+      .back {
+        width: 40px;
+        height: 40px;
+        font-size: 10px;
+        top: 15px;
+        right: 15px;
+      }
+    }
+
+    .back:hover {
+      box-shadow: 0 8px 25px rgba(77, 134, 156, 0.5);
+      transform: translateX(3px);
+
+
+    }
+  </style>
+  <link href="./bootstrap/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="menu-container">
+    <input type="checkbox" id="menuToggle" class="menu-toggle">
+    <label for="menuToggle" class="menu-button"></label>
+    <div class="menu-items">
+      <a href="./khane.html" class="menu-item">خانه</a>
+      <a href="./idea.html" class="menu-item">انواع سبک</a>
+      <a href="./DecorSolution.html" class="menu-item">ايده کوتاه</a>
+      <a href="./Articles.html" class="menu-item"> مقالات </a>
+      <a href="./Color.html" class="menu-item"> رنگ ها </a>
+
+    </div>
+  </div>
+
+  <a href="./idea.html">
+    <div class="back">برگشت</div>
+  </a>
+
+
+  <div class="container py-5">
+    <h2 class="text-center">🎨 سبک هاي سالن پذيرايي</h2>
+    <div class="row g-4">
+
+      <div class="col-md-4">
+        <div class="card">
+          <img src="./LivingRoom/modernLivingRoom.jpeg" class="card-img-top" alt="مدرن">
+          <div class="card-body">
+            <h5 class="card-title">مدرن</h5>
+            <p class="card-text">خط هاي صاف، رنگ هاي خنثي و مبلمان ساده، کاربردي.</p>
+            <p class="tagline"> اگه منظم، مينيمال پسند و طرفدار تکنولوژي و فضاهاي مرتب هستي.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card">
+          <img src="./LivingRoom/kelasicLivingRoom.jpeg" class="card-img-top" alt="کلاسيک">
+          <div class="card-body">
+            <h5 class="card-title">کلاسيک</h5>
+            <p class="card-text">مبلمان سنگين،پرده هاي پر نقش، رنگ هاي گرم، حس شکوه.</p>
+            <p class="tagline"> اگه تجمل دوست، اهل سنت و عاشق فضاهاي لوکس و رسمي هستي.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card">
+          <img src="./LivingRoom/minimalLivingRoom.jpeg" class="card-img-top" alt="مينيمال">
+          <div class="card-body">
+            <h5 class="card-title">مينيمال</h5>
+            <p class="card-text">سادگي مطلق، وسايل ضروري، رنگ هاي روشن، فضاي خلوت.</p>
+            <p class="tagline"> اگه آرامش، خلوت و نظم ذهنت برات مهمه و از شلوغي فراري بهترين انتخابه.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card">
+          <img src="./LivingRoom/rosticLivingRoom.jpeg" class="card-img-top" alt="روستيک">
+          <div class="card-body">
+            <h5 class="card-title">روستيک</h5>
+            <p class="card-text">استفاده از چوب و سنگ طبيعي، شومينه، رنگ هاي گرم، حس کلبه جنگلي.</p>
+            <p class="tagline">اگه طبيعت دوست، دنبال يه فضاي صميمي و گرم هستي.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card">
+          <img src="./LivingRoom/skandinaviLivingRoom.jpeg" class="card-img-top" alt="اسکانديناوي">
+          <div class="card-body">
+            <h5 class="card-title">اسکانديناوي</h5>
+            <p class="card-text">روشنايي زياد، مبلمان ساده، ترکيب سفيد و رنگ هاي ملايم، حس دنجي.</p>
+            <p class="tagline">اگه عاشق سادگي، صميميت و راحتي بدون تجمل هستي.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card">
+          <img src="./LivingRoom/sanatiLivingRoom.jpeg" class="card-img-top" alt="صنعتي">
+          <div class="card-body">
+            <h5 class="card-title">صنعتي</h5>
+            <p class="card-text">ديوار اجري، لوله ها و فلزات نمايان، لامپ هاي آويز، حس کارگاهي.</p>
+            <p class="tagline">اگه خاص پسند، خلاق و دنبال يه فضاي متفاوت و هنري هستي.</p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-md-4">
+        <div class="card">
+          <img src="./LivingRoom/bohoLivingRoom.jpg" class="card-img-top" alt="بوهو">
+          <div class="card-body">
+            <h5 class="card-title">بوهو</h5>
+            <p class="card-text">رنگارنگ، پر از گياه، فرش، کوسن و وسايل دست ساز.</p>
+            <p class="tagline"> اگه آزاد روح، ماجراجو و عاشق ترکيب رنگ ها و خلاقيت هستي.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card">
+          <img src="./LivingRoom/saheliLivingRoom.jpg" class="card-img-top" alt="ساحلي">
+          <div class="card-body">
+            <h5 class="card-title">ساحلي</h5>
+            <p class="card-text">رنگ هاي آبي و سفيد، وسايل سبک، حس دريا و آرامش ساحل.</p>
+            <p class="tagline"> اگه آرامش، تعطيلات و حس رهايي برات مهمه.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card">
+          <img src="./LivingRoom/zhaponiLivingRoom.jpg" class="card-img-top" alt="ژاپني">
+          <div class="card-body">
+            <h5 class="card-title">ژاپني</h5>
+            <p class="card-text">چوب طبيعي، خطوط ساده، فضاي خلوت و الهام از طبيعت.</p>
+            <p class="tagline"> اگه آرام، اهل مديتيشن و طرفدار هماهنگي و سادگي هستي.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div style="margin-right: 430px;"> -->
+        <div class="col-md-4">
+          <div class="card">
+            <img src="./LivingRoom/moaserLivingRoom.jpg" class="card-img-top" alt="معاصر">
+            <div class="card-body">
+              <h5 class="card-title">معاصر</h5>
+              <p class="card-text">ترکيب سبک هاي مختلف، طراحي به روز، انعطاف پذير و شيک.</p>
+              <p class="tagline"> اگه دنبال مد روز، تغيير و تنوع در دکور هستي.</p>
+            </div>
+          </div>
+        </div>
+      <!-- </div> -->
+
+    </div>
+  </div>
+  <SCript src="./bootstrap/bootstrap.bundle.min.js"></SCript>
+</body>
+
+</html>

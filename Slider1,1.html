@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Decorino</title>
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #EEF7FF 0%, #CDE8E5 100%);
+      font-family: Tahoma, sans-serif;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 80px 20px;
+      background-color: rgba(205, 232, 229, 0.9);
+      border-bottom-left-radius: 50px;
+      border-bottom-right-radius: 50px;
+      color: #4D869C;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero img {
+      position: absolute;
+      right: 20px;
+      bottom: 10px;
+      width: 150px;
+      opacity: 0.2;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+
+    .cards-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      margin: 50px auto;
+      max-width: 1100px;
+    }
+
+    .card-custom {
+      background-color: #7AB2B2;
+      color: white;
+      border-radius: 25px;
+      padding: 30px;
+      width: 280px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .card-custom i {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: #EEF7FF;
+    }
+
+
+    .card-custom:hover {
+      transform: translateY(-10px) scale(1.03);
+      background-color: #4D869C;
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+    }
+
+
+    .card-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: #CDE8E5;
+      color: #4D869C;
+      padding: 15px;
+      border-radius: 0 0 25px 25px;
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      text-align: justify;
+      font-size: 0.95rem;
+    }
+
+
+    .card-custom:hover .card-content {
+      opacity: 1;
+      max-height: 200px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 2rem;
+      color: #4D869C;
+    }
+
+
+    .floating-circle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.1;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-20px);
+      }
+
+      100% {
+        transform: translateY(0px);
+      }
+    }
+
+    .menu-container {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1000;
+    }
+
+    .menu-toggle {
+      display: none;
+    }
+
+    .menu-button {
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #7AB2B2, #4D869C);
+      border: 3px solid #CDE8E5;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 5px 20px rgba(77, 134, 156, 0.4);
+      transition: all 0.3s ease;
+      color: white;
+      font-size: 22px;
+      font-weight: bold;
+      position: relative;
+    }
+
+    .menu-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px rgba(77, 134, 156, 0.5);
+    }
+
+    .menu-button::before {
+      content: '☰';
+      transition: all 0.3s ease;
+    }
+
+    .menu-items {
+      position: absolute;
+      top: 75px;
+      left: 0;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      border: 2px solid #CDE8E5;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-20px);
+      transition: all 0.3s ease;
+    }
+
+    .menu-toggle:checked~.menu-items {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .menu-item {
+      display: block;
+      padding: 15px 25px;
+      background: #EEF7FF;
+      border-bottom: 1px solid #CDE8E5;
+      text-decoration: none;
+      color: #4D869C;
+      font-weight: 600;
+      text-align: center;
+      min-width: 130px;
+      transition: all 0.2s ease;
+    }
+
+    .menu-item:last-child {
+      border-bottom: none;
+    }
+
+    .menu-item:hover {
+      background: #CDE8E5;
+      color: #4D869C;
+      transform: translateX(3px);
+    }
+
+    .back {
+      width: 50px;
+      height: 50px;
+      background-color: #4D869C;
+      border-radius: 50%;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* text-align: center; */
+      /* padding-top: 10px; */
+      color: white;
+      font-size: 12px;
+      box-shadow: 0 5px 20px rgba(77, 134, 156, 0.4);
+      border: 3px solid #CDE8E5;
+      text-decoration: none;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    
+    @media (max-width: 576px) {
+      .back {
+        width: 40px;
+        height: 40px;
+        font-size: 10px;
+        top: 15px;
+        right: 15px;
+      }
+    }
+
+    .back:hover {
+      box-shadow: 0 8px 25px rgba(77, 134, 156, 0.5);
+      transform: translateX(3px);
+
+
+    }
+  </style>
+  <link href="./bootstrap/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="menu-container">
+    <input type="checkbox" id="menuToggle" class="menu-toggle">
+    <label for="menuToggle" class="menu-button"></label>
+    <div class="menu-items">
+      <a href="./khane.html" class="menu-item">خانه</a>
+      <a href="./idea.html" class="menu-item">انواع سبک</a>
+      <a href="./DecorSolution.html" class="menu-item">ايده کوتاه</a>
+      <a href="./Articles.html" class="menu-item"> مقالات </a>
+      <a href="./Color.html" class="menu-item"> رنگ ها </a>
+
+    </div>
+  </div>
+
+
+  <a href="./Slider1.html">
+    <div class="back">برگشت</div>
+  </a>
+
+
+
+
+
+  <div class="hero">
+    <h1>💡 ایده روشن</h1>
+    <p>یک سفر جذاب برای کشف ایده‌ها و الهام گرفتن در خانه شما…</p>
+  </div>
+
+  <h2 class="section-title">کشف ایده‌ها</h2>
+  <div class="cards-container">
+
+    <div class="card-custom">
+      <i class="fas fa-lightbulb"></i>
+      ایده جرقه‌ای
+      <div class="card-content">
+        یک ایده روشن که همه چیز را تغییر می‌دهد… کمی فکر کن
+        و ببین چه ایده‌ای می‌تواند خانه‌ات را زنده کند.
+      </div>
+    </div>
+
+    <div class="card-custom">
+      <i class="fas fa-star"></i>
+      نکته جذاب
+      <div class="card-content">
+        تغییر کوچک در نور خانه می‌تواند انرژی محیط را
+        کاملاً تغییر دهد… امتحان کن و حس جدید را تجربه کن!
+      </div>
+    </div>
+
+
+
+    <div class="card-custom">
+      <i class="fas fa-flask"></i>
+      چالش عملی
+      <div class="card-content">
+        یک لامپ رنگی در اتاق بگذار و ببین چطور حس و
+        حالت فضا تغییر می‌کند… این یک تمرین ساده اما مؤثر است.
+      </div>
+    </div>
+
+    <div class="card-custom">
+      <i class="fas fa-magic"></i>
+      الهام بیشتر
+      <div class="card-content">
+        ترکیب نور، رنگ و چیدمان کوچک می‌تواند خانه
+        را جادویی کند… با این روش‌ها فضای الهام‌بخش بساز.
+      </div>
+    </div>
+
+    <div class="card-custom">
+      <i class="fas fa-check-circle"></i>
+      جمع‌بندی
+      <div class="card-content">
+        با این ایده‌های روشن،خانه‌ات را به فضایی خوب
+        تبدیل کن…قدم اول همیشه ساده است اما تأثیر خوبي دارد
+      </div>
+    </div>
+
+  </div>
+  <script src="./bootstrap/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

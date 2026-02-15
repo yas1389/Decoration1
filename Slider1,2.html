@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Decorino</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #cde8e5, #eef7ff);
+      font-family: Tahoma, sans-serif;
+    }
+
+    .hero-modern {
+      text-align: center;
+      padding: 100px 20px;
+      background: linear-gradient(135deg, #7ab2b2, #4d869c);
+      color: white;
+      border-bottom-left-radius: 40px;
+      border-bottom-right-radius: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-modern h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .hero-modern p {
+      font-size: 1.2rem;
+      opacity: 0.9px;
+    }
+
+    .cards-modern {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 0px 20px;
+    }
+
+    .card-modern {
+      background: rgba(255, 255, 255, 0.25);
+      border-radius: 20px;
+      backdrop-filter: blur(8px);
+      padding: 25px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      color: #4d869c;
+      box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-modern i {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      color: #4d869c;
+    }
+
+    .card-modern:hover {
+      transform: translateY(-15px) scale(1.03);
+      box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-text-hidden {
+      position: absolute;
+      bottom: -100%;
+      left: 0%;
+      right: 0%;
+      background: rgba(205, 232, 229, 0.95);
+      padding: 15px;
+      text-align: justify;
+      border-radius: 0px 0px 20px 20px;
+      font-size: 0.95rem;
+      color: #4d869c;
+      transition: bottom 0.5s ease;
+    }
+
+    .card-modern:hover .card-text-hidden {
+      bottom: 0%;
+    }
+
+    .card-modern span {
+      font-size: 2rem;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+
+    .menu-container {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1000;
+    }
+
+    .menu-toggle {
+      display: none;
+    }
+
+    .menu-button {
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #7AB2B2, #4D869C);
+      border: 3px solid #CDE8E5;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 5px 20px rgba(77, 134, 156, 0.4);
+      transition: all 0.3s ease;
+      color: white;
+      font-size: 22px;
+      font-weight: bold;
+      position: relative;
+    }
+
+    .menu-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px rgba(77, 134, 156, 0.5);
+    }
+
+    .menu-button::before {
+      content: '☰';
+      transition: all 0.3s ease;
+    }
+
+    .menu-items {
+      position: absolute;
+      top: 75px;
+      left: 0;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      border: 2px solid #CDE8E5;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-20px);
+      transition: all 0.3s ease;
+    }
+
+    .menu-toggle:checked~.menu-items {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .menu-item {
+      display: block;
+      padding: 15px 25px;
+      background: #EEF7FF;
+      border-bottom: 1px solid #CDE8E5;
+      text-decoration: none;
+      color: #4D869C;
+      font-weight: 600;
+      text-align: center;
+      min-width: 130px;
+      transition: all 0.2s ease;
+    }
+
+    .menu-item:last-child {
+      border-bottom: none;
+    }
+
+    .menu-item:hover {
+      background: #CDE8E5;
+      color: #4D869C;
+      transform: translateX(3px);
+    }
+
+
+   .back {
+      width: 50px;
+      height: 50px;
+      background-color: #4D869C;
+      border-radius: 50%;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* text-align: center; */
+      /* padding-top: 10px; */
+      color: white;
+      font-size: 12px;
+      box-shadow: 0 5px 20px rgba(77, 134, 156, 0.4);
+      border: 3px solid #CDE8E5;
+      text-decoration: none;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    
+    @media (max-width: 576px) {
+      .back {
+        width: 40px;
+        height: 40px;
+        font-size: 10px;
+        top: 15px;
+        right: 15px;
+      }
+    }
+
+    .back:hover {
+      box-shadow: 0 8px 25px rgba(77, 134, 156, 0.5);
+      transform: translateX(3px);
+
+
+    }
+  </style>
+  <link rel="stylesheet" href="././bootstrap/bootstrap.min.css">
+</head>
+
+<body>
+
+
+  <div class="menu-container">
+    <input type="checkbox" id="menuToggle" class="menu-toggle">
+    <label for="menuToggle" class="menu-button"></label>
+    <div class="menu-items">
+      <a href="./khane.html" class="menu-item">خانه</a>
+      <a href="./idea.html" class="menu-item">انواع سبک</a>
+      <a href="./DecorSolution.html" class="menu-item">ايده کوتاه</a>
+      <a href="./Articles.html" class="menu-item"> مقالات </a>
+      <a href="./Color.html" class="menu-item"> رنگ ها </a>
+
+    </div>
+  </div>
+
+  <a href="./Slider1.html">
+    <div class="back">برگشت</div>
+  </a>
+
+  <div class="hero-modern">
+    <h1>🎨 طراحی مدرن</h1>
+    <p>دنیای زیبایی‌شناسی مینیمال و خلاقانه برای فضای زندگی تو</p>
+  </div>
+
+  <div class="cards-modern">
+
+    <div class="card-modern">
+      <span>⚪️</span>
+      مینیمالیسم
+      <div class="card-text-hidden">
+        طراحی مدرن همیشه با سادگی و نظم شناخته می‌شود… کمتر یعنی بیشتر!
+      </div>
+    </div>
+
+    <div class="card-modern">
+      <span>🛋️</span>
+      دکور شیک
+      <div class="card-text-hidden">
+        با خطوط ساده و رنگ‌های روشن می‌توانی فضایی لوکس و در عین حال راحت بسازی…
+      </div>
+    </div>
+
+    <div class="card-modern">
+      <span>🎨</span>
+      رنگ‌های مدرن
+      <div class="card-text-hidden">
+        ترکیب رنگ‌های ملایم با سایه‌های عمیق، حس مدرنیته و آرامش را با هم می‌آورد.
+      </div>
+    </div>
+
+    <div class="card-modern">
+      <span>📐</span>
+      خطوط و هندسه
+      <div class="card-text-hidden">
+        در طراحی مدرن همه چیز درباره هندسه و هماهنگی است… از خطوط صاف تا زاویه‌های دقیق.
+      </div>
+    </div>
+
+  </div>
+
+  <script src="./bootstrap/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

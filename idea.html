@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" 
+    content="width=device-width,
+     initial-scale=1.0">
+    <title>Decorino</title>
+    <style>
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background: #eef7ff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 60px 20px;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            color: #4D869C;
+            animation: textGradient 6s linear infinite;
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 3px;
+            background-color: white;
+        }
+
+        @keyframes textGradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .box-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 45px;
+            perspective: 1500px;
+        }
+
+        .box {
+            width: 220px;
+            height: 220px;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #7ab2b2, #4d869c, #cde8e5);
+            background-size: 400% 400%;
+            animation: gradientMove 12s ease infinite;
+            box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.35),
+                0px 0px 25px rgba(122, 178, 178, 0.6),
+                inset 0px 0px 30px rgba(255, 255, 255, 0.1);
+            transition: all 0.6s ease;
+        }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .box:hover {
+            transform: rotateY('10deg') rotateX('6deg') scale(1.2);
+            box-shadow: 0px 25px 55px rgba(0, 0, 0, 0.7),
+                0px 0px 70px rgba(122, 178, 178, 0.9),
+                inset 0px 0px 40px rgba(255, 255, 255, 0.2)
+        }
+
+        .box {
+            opacity: 0px;
+            transform: translateY(50px);
+            animation: fadeInUp 0.9s forwards;
+        }
+
+        .box:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .box:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .box:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .box:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .box:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1px;
+                transform: translateY(0px);
+            }
+        }
+
+
+        .menu-container {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+
+        .menu-toggle {
+            display: none;
+        }
+
+        .menu-button {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #7AB2B2, #4D869C);
+            border: 3px solid #CDE8E5;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 20px rgba(77, 134, 156, 0.4);
+            transition: all 0.3s ease;
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .menu-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(77, 134, 156, 0.5);
+        }
+
+        .menu-button::before {
+            content: '☰';
+            transition: all 0.3s ease;
+        }
+
+        .menu-items {
+            position: absolute;
+            top: 75px;
+            left: 0;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            border: 2px solid #CDE8E5;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-20px);
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle:checked~.menu-items {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .menu-item {
+            display: block;
+            padding: 15px 25px;
+            background: #EEF7FF;
+            border-bottom: 1px solid #CDE8E5;
+            text-decoration: none;
+            color: #4D869C;
+            font-weight: 600;
+            text-align: center;
+            min-width: 130px;
+            transition: all 0.2s ease;
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .menu-item:hover {
+            background: #CDE8E5;
+            color: #4D869C;
+            transform: translateX(3px);
+        }
+
+        .back {
+            width: 50px;
+            height: 50px;
+            background-color: #4D869C;
+            border-radius: 100%;
+            position: fixed;
+            top: 3%;
+            right: 1%;
+            text-align: center;
+            padding-top: 10px;
+            color: white;
+            box-shadow: 0 5px 20px rgba(77, 134, 156, 0.4);
+            border: 3px solid #CDE8E5;
+            transition: all 0.3s ease;
+            font-size: 14px;
+
+        }
+
+        .back:hover {
+            box-shadow: 0 8px 25px rgba(77, 134, 156, 0.5);
+            transform: translateX(3px);
+
+
+        }
+    </style>
+    <link rel="stylesheet" href="./bootstrap/bootstrap.min.css">
+</head>
+
+<body>
+
+    <div class="menu-container">
+        <input type="checkbox" id="menuToggle" class="menu-toggle">
+        <label for="menuToggle" class="menu-button"></label>
+        <div class="menu-items">
+            <a href="./khane.html" class="menu-item">خانه</a>
+            <a href="./idea.html" class="menu-item">انواع سبک</a>
+            <a href="./DecorSolution.html" class="menu-item">ايده کوتاه</a>
+            <a href="./Articles.html" class="menu-item"> مقالات </a>
+            <a href="./Color.html" class="menu-item"> رنگ ها </a>
+
+        </div>
+    </div>
+
+    <a href="./khane.html">
+        <div class="back">برگشت</div>
+    </a>
+
+
+
+
+    <div class="header">
+        <h1>قسمت مورد نظر را انتخاب کنيد</h1>
+    </div>
+
+    <div class="container box-section">
+        <a href="./ideaLobby.html" class="box">لابي</a>
+        <a href="./ideaLivingRoom.html" class="box">سالن پذيرايي</a>
+        <a href="./ideaKitchen.html" class="box">آشپزخانه</a>
+        <a href="./ideaDiningRoom.html" class="box">سالن غذا خوري</a>
+        <a href="./ideaBedRoom.html" class="box">اتاق خواب</a>
+        <a href="./ideaStudyRoom.html" class="box">اتاق کار</a>
+        <a href="./ideaWc.html" class="box">سرويس بهداشتي</a>
+        <a href="./ideaBathRoom.html" class="box">حمام</a>
+        <a href="./ideaTerrace.html" class="box">تراس</a>
+        <a href="./ideaStrageRoom.html" class="box">انباری</a>
+        <a href="./ideaParking.html" class="box">پارکينگ</a>
+        <a href="./ideaGuestRoom.html" class="box">اتاق مهمان</a>
+    </div>
+
+
+
+
+    <script src="./bootstrap/bootstrap.bundle.min.js"></script>
+
+
+</body>
+
+</html>

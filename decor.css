@@ -1,0 +1,201 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+    background: linear-gradient(135deg, #EEF7FF 0%, #CDE8E5 100%);
+    min-height: 100vh;
+    position: relative;
+}
+
+.menu-container {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+}
+
+.menu-toggle {
+    display: none;
+}
+
+.menu-button {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #7AB2B2, #4D869C);
+    border: 3px solid #CDE8E5;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 20px rgba(77, 134, 156, 0.4);
+    transition: all 0.3s ease;
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    position: relative;
+}
+
+.menu-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(77, 134, 156, 0.5);
+}
+
+.menu-button::before {
+    content: '☰';
+    transition: all 0.3s ease;
+}
+
+.menu-items {
+    position: absolute;
+    top: 75px;
+    left: 0;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    border: 2px solid #CDE8E5;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: all 0.3s ease;
+}
+
+.menu-toggle:checked~.menu-items {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.menu-item {
+    display: block;
+    padding: 15px 25px;
+    background: #EEF7FF;
+    border-bottom: 1px solid #CDE8E5;
+    text-decoration: none;
+    color: #4D869C;
+    font-weight: 600;
+    text-align: center;
+    min-width: 130px;
+    transition: all 0.2s ease;
+}
+
+.menu-item:last-child {
+    border-bottom: none;
+}
+
+.menu-item:hover {
+    background: #CDE8E5;
+    color: #4D869C;
+    transform: translateX(3px);
+}
+
+.demo-sections {
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.demo-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(77, 134, 156, 0.1);
+    border: 2px solid #CDE8E5;
+    transition: all 0.3s ease;
+}
+
+.demo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(77, 134, 156, 0.2);
+}
+
+.demo-card h3 {
+    color: #4D869C;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+#decorinoSlider .carousel-item img {
+    height: 500px;
+    object-fit: cover;
+    filter: brightness(80%);
+    animation: zoomEffect 10s infinite alternate;
+
+
+    position: relative;
+}
+
+@keyframes zoomEffect {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.1);
+    }
+}
+
+#decorinoSlider .carousel-caption {
+    bottom: 20%;
+    animation: fadeUp 1s ease-in-out;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 0px 2px rgba(255, 255, 255, 0.2);
+    padding: 20px 30px;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0px;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1px;
+        transform: translateY(0px);
+    }
+}
+
+#decorinoSlider .carousel-caption h2 {
+    font-size: 3rem;
+    font-weight: 800px;
+    text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.7);
+}
+
+#decorinoSlider .carousel-caption p {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+#decorinoSlider .carousel-caption a:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.8);
+}
+
+#decorinoSlider .carousel-control-prev-icon,
+#decorinoSlider .carousel-control-next-icon {
+    width: 50px;
+    height: 50px;
+    background-size: 100% 100%;
+    filter: drop-shadow(0px 0px 10px #fff);
+}
+
+#decorinoSlider .carousel-control-prev,
+#decorinoSlider .carousel-control-next {
+    transition: all 0.3s ease-in-out;
+}
+
+#decorinoSlider .carousel-control-prev:hover,
+#decorinoSlider .carousel-control-next:hover {
+    transform: scale(1.2);
+}

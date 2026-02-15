@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decorino</title>
+    <style>
+        body {
+            background-color: #eef7ff;
+            font-family: "Tahoma", sans-serif;
+            line-height: 1.9px;
+        }
+
+        .article-header {
+            background-color: #4d869c;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+        }
+
+        .article-header h1 {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .article-content {
+            background-color: #cde8e5;
+            padding: 30px;
+            margin-top: -30px;
+            border-radius: 20px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .article-img {
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        .btn-back {
+            background-color: #7ab2b2;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn-back:hover {
+            background-color: #4d869c;
+            color: white;
+        }
+
+
+        .menu-container {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+
+        .menu-toggle {
+            display: none;
+        }
+
+        .menu-button {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #7AB2B2, #4D869C);
+            border: 3px solid #CDE8E5;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 20px rgba(77, 134, 156, 0.4);
+            transition: all 0.3s ease;
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .menu-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(77, 134, 156, 0.5);
+        }
+
+        .menu-button::before {
+            content: '☰';
+            transition: all 0.3s ease;
+        }
+
+        .menu-items {
+            position: absolute;
+            top: 75px;
+            left: 0;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            border: 2px solid #CDE8E5;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-20px);
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle:checked~.menu-items {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .menu-item {
+            display: block;
+            padding: 15px 25px;
+            background: #EEF7FF;
+            border-bottom: 1px solid #CDE8E5;
+            text-decoration: none;
+            color: #4D869C;
+            font-weight: 600;
+            text-align: center;
+            min-width: 130px;
+            transition: all 0.2s ease;
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .menu-item:hover {
+            background: #CDE8E5;
+            color: #4D869C;
+            transform: translateX(3px);
+        }
+
+
+       
+
+        /* .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            position: relative;
+           
+        }
+
+        .article-content p,
+        .article-content h4 {
+            word-wrap: break-word;
+        }
+
+        @media (max-width: 768px) {
+            .article-header h1 {
+                font-size: 1.5rem;
+            }
+            .article-header p {
+                font-size: 0.9rem;
+            }
+            .article-content {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .article-header h1 {
+                font-size: 1.2rem;
+            }
+            .article-header p {
+                font-size: 0.8rem;
+            }
+            .btn-back {
+                padding: 6px 15px;
+                font-size: 12px;
+            }
+        } */
+    </style>
+    <link rel="stylesheet" href="./bootstrap/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="menu-container">
+        <input type="checkbox" id="menuToggle" class="menu-toggle">
+        <label for="menuToggle" class="menu-button" style="padding: 0%;"></label>
+        <div class="menu-items">
+            <a href="./khane.html" class="menu-item">خانه</a>
+            <a href="./idea.html" class="menu-item">انواع سبک </a>
+            <a href="./DecorSolution.html" class="menu-item">ايده کوتاه</a>
+            <a href="./Articles.html" class="menu-item"> مقالات </a>
+            <a href="./Color.html" class="menu-item"> رنگ ها </a>
+
+        </div>
+    </div>
+
+
+
+
+    <div class="article-header">
+        <h1>چطور خانه کوچک خود را بزرگتر نشان دهيم؟</h1>
+        <p>ترفند هاي طراحي داخلي براي فضاهاي کوچک</p>
+    </div>
+
+
+
+    <div class="container my-5" >
+        <div class="article-content">
+            <img src="./Articles/1.jpeg" alt="خانه کوچک" class="img-fluid article-img">
+
+
+            <p>خیلی از ما در خانه‌های کوچک زندگی می‌کنیم و
+                همیشه به دنبال این هستیم که چطور فضای موجود را بزرگ‌تر و دل‌بازتر نشان دهیم.
+                خوشبختانه با چند ترفند ساده می‌توانیم حس بزرگی و روشنایی را به خانه بیاوریم.</p>
+
+            <h4>۱. استفاده از رنگ‌های روشن</h4>
+
+            <p>رنگ‌های روشن مثل سفید، کرم و آبی ملایم باعث می‌شوند
+                دیوارها عقب‌تر به نظر برسند و فضا بازتر دیده شود.
+                بهتر است دیوارها و سقف را روشن انتخاب کنید.</p>
+
+            <h4>۲. نورپردازی مناسب</h4>
+
+            <p>نور طبیعی همیشه بهترین گزینه است.
+                پرده‌های نازک یا کرکره‌های روشن انتخاب کنید تا نور بیشتری وارد خانه شود.
+                همچنین از آباژورها و چراغ‌های دیواری برای ایجاد عمق در فضا استفاده کنید.</p>
+
+            <h4>۳. انتخاب مبلمان هوشمند</h4>
+
+            <p>مبلمانی بخرید که چند کاره باشند.
+                مثلاً مبل‌های تخت‌خواب‌شو یا میزهایی که قابلیت جمع شدن دارند.
+                این کار کمک می‌کند فضای بیشتری برای حرکت باقی بماند.</p>
+
+            <h4>۴. استفاده از آینه</h4>
+
+            <p>آینه یکی از بهترین ابزارها برای بزرگ‌تر نشان دادن فضاست.
+                اگر آینه را روبه‌روی پنجره نصب کنید،
+                نور طبیعی منعکس شده و اتاق بزرگ‌تر به نظر می‌رسد.</p>
+
+            <h4>۵. خلوت نگه داشتن فضا</h4>
+
+            <p>هرچه خانه خلوت‌تر و مرتب‌تر باشد، بزرگ‌تر دیده می‌شود.
+                پس از خرید وسایل غیرضروری خودداری کنید و
+                همیشه نظم را در خانه رعایت کنید.</p>
+
+
+            <div class="text-center mt-4">
+                <a href="Articles.html" class="btn-back">بازگشت به مقالات</a>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="./bootstrap/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

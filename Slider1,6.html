@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Decorino</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #CDE8E5, #EEF7FF);
+      font-family: 'Tahoma', sans-serif;
+    }
+
+
+    .hero-personal {
+      text-align: center;
+      padding: 100px 20px;
+      background: linear-gradient(135deg, #7AB2B2, #4D869C);
+      color: #EEF7FF;
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    }
+
+    .hero-personal h1 {
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+
+    .hero-personal p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+
+    .cards-personal {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 0 20px;
+      perspective: 1200px;
+    }
+
+
+    .card-personal {
+      background: #FFF8E7;
+      border-radius: 15px;
+      padding: 25px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      color: #4D869C;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      transform: rotate(-3deg);
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+      cursor: pointer;
+      border: 1px dashed #7AB2B2;
+      font-family: 'Courier New', monospace;
+    }
+
+
+    .card-personal span {
+      font-size: 2.5rem;
+      display: block;
+      margin-bottom: 12px;
+      transition: transform 0.5s ease;
+    }
+
+
+    .card-personal:hover {
+      transform: rotate(0deg) translateY(-5px);
+      box-shadow: 0 20px 35px rgba(0, 0, 0, 0.25);
+    }
+
+    .card-personal:hover span {
+      transform: translateY(-10px) rotate(5deg);
+    }
+
+
+    .card-text-hidden {
+      opacity: 0;
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-top: 10px;
+      transform: translateY(15px);
+    }
+
+    .card-personal:hover .card-text-hidden {
+      opacity: 1;
+      transform: translateY(0);
+      font-weight: bold;
+    }
+
+
+    .menu-container {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1000;
+    }
+
+    .menu-toggle {
+      display: none;
+    }
+
+    .menu-button {
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #7AB2B2, #4D869C);
+      border: 3px solid #CDE8E5;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 5px 20px rgba(77, 134, 156, 0.4);
+      transition: all 0.3s ease;
+      color: white;
+      font-size: 22px;
+      font-weight: bold;
+      position: relative;
+    }
+
+    .menu-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px rgba(77, 134, 156, 0.5);
+    }
+
+    .menu-button::before {
+      content: '☰';
+      transition: all 0.3s ease;
+    }
+
+    .menu-items {
+      position: absolute;
+      top: 75px;
+      left: 0;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      border: 2px solid #CDE8E5;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-20px);
+      transition: all 0.3s ease;
+    }
+
+    .menu-toggle:checked~.menu-items {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .menu-item {
+      display: block;
+      padding: 15px 25px;
+      background: #EEF7FF;
+      border-bottom: 1px solid #CDE8E5;
+      text-decoration: none;
+      color: #4D869C;
+      font-weight: 600;
+      text-align: center;
+      min-width: 130px;
+      transition: all 0.2s ease;
+    }
+
+    .menu-item:last-child {
+      border-bottom: none;
+    }
+
+    .menu-item:hover {
+      background: #CDE8E5;
+      color: #4D869C;
+      transform: translateX(3px);
+    }
+
+
+    .back {
+      width: 50px;
+      height: 50px;
+      background-color: #4D869C;
+      border-radius: 50%;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* text-align: center; */
+      /* padding-top: 10px; */
+      color: white;
+      font-size: 12px;
+      box-shadow: 0 5px 20px rgba(77, 134, 156, 0.4);
+      border: 3px solid #CDE8E5;
+      text-decoration: none;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    
+    @media (max-width: 576px) {
+      .back {
+        width: 40px;
+        height: 40px;
+        font-size: 10px;
+        top: 15px;
+        right: 15px;
+      }
+    }
+
+    .back:hover {
+      box-shadow: 0 8px 25px rgba(77, 134, 156, 0.5);
+      transform: translateX(3px);
+
+
+    }
+  </style>
+  <link href="./bootstrap/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="menu-container">
+    <input type="checkbox" id="menuToggle" class="menu-toggle">
+    <label for="menuToggle" class="menu-button"></label>
+    <div class="menu-items">
+      <a href="./khane.html" class="menu-item">خانه</a>
+      <a href="./idea.html" class="menu-item">انواع سبک</a>
+      <a href="./DecorSolution.html" class="menu-item">ايده کوتاه</a>
+      <a href="./Articles.html" class="menu-item"> مقالات </a>
+      <a href="./Color.html" class="menu-item"> رنگ ها </a>
+
+    </div>
+  </div>
+
+  <a href="./Slider1.html">
+    <div class="back">برگشت</div>
+  </a>
+
+  <div class="hero-personal">
+    <h1>📝 سبک شخصی</h1>
+    <p>خانه‌ای که سبک تو را داشته باشد… تجربه‌ای منحصر به دکورینو</p>
+  </div>
+
+  <div class="cards-personal">
+
+    <div class="card-personal">
+      <span>✍️</span>
+      یادداشت شخصی
+      <div class="card-text-hidden">
+        هر ایده، هر رنگ و هر چیدمان مطابق سلیقه تو… خانه‌ای که فقط تو داری!
+      </div>
+    </div>
+
+    <div class="card-personal">
+      <span>📓</span>
+      دفترچه خلاقیت
+      <div class="card-text-hidden">
+        ثبت سبک شخصی و طراحی خانه، جایی که هیچ کس جز تو تجربه نمی‌کنه…
+      </div>
+    </div>
+
+    <div class="card-personal">
+      <span>🖊️</span>
+      ابزار طراحی
+      <div class="card-text-hidden">
+        ابزارها و ترکیب‌هایی که به تو کمک می‌کنه سبک خودت رو خلق کنی… پشیمون نمی‌شی!
+      </div>
+    </div>
+
+    <div class="card-personal">
+      <span>🎯</span>
+      هدف و سبک
+      <div class="card-text-hidden">
+        خانه‌ای که هویت تو را منعکس می‌کنه، با هر جزئیات و رنگی که خودت انتخاب می‌کنی…
+      </div>
+    </div>
+
+    <div class="card-personal">
+      <span>🧩</span>
+      قطعه‌های زندگی
+      <div class="card-text-hidden">
+        ترکیب بخش‌های مختلف زندگی‌ت، در طراحی خانه… تجربه‌ای که فقط تو داری!
+      </div>
+    </div>
+
+  </div>
+  <script src="./bootstrap/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

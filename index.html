@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decorino</title>
+    <style>
+        body {
+            font-family: 'Vasirmatn', sans-serif;
+            background: #eef7ff;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, #cde8e5, #eef7ff, #7ab2b2);
+            position: relative;
+            overflow: hidden;
+            padding: 2rem;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: #4d869c;
+            border-radius: 50%;
+            top: -150px;
+            right: -200px;
+            opacity: 0.2;
+            animation: float 6s infinite ease-in-out;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800px;
+            color: #4d869c;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #333;
+            margin-bottom: 2rem;
+        }
+
+        .btn-dkn {
+            background: #4d869c;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600px;
+            transition: all 0.3s ease;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-dkn:hover {
+            background: #7ab2b2;
+            transform: scale(1.05);
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-40px);
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="./bootstrap/bootstrap.min.css">
+</head>
+
+<body>
+
+
+    <section class="hero d-flex align-items-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h1>دکورينو</h1>
+                    <p>لمس زيبايي در هر گوشه خانه</p>
+
+
+
+                    <a href="./khane.html" class="btn-dkn">وارد شويد</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="./bootstrap/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

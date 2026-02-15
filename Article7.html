@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decorino</title>
+    <style>
+        body {
+            background-color: #eef7ff;
+            font-family: "Tahoma", sans-serif;
+            line-height: 1.9px;
+        }
+
+        .article-header {
+            background-color: #4d869c;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+        }
+
+        .article-header h1 {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .article-content {
+            background-color: #cde8e5;
+            padding: 30px;
+            margin-top: -30px;
+            border-radius: 20px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .article-img {
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        .btn-back {
+            background-color: #7ab2b2;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn-back:hover {
+            background-color: #4d869c;
+            color: white;
+        }
+
+        .menu-container {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+
+        .menu-toggle {
+            display: none;
+        }
+
+        .menu-button {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #7AB2B2, #4D869C);
+            border: 3px solid #CDE8E5;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 20px rgba(77, 134, 156, 0.4);
+            transition: all 0.3s ease;
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .menu-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(77, 134, 156, 0.5);
+        }
+
+        .menu-button::before {
+            content: '☰';
+            transition: all 0.3s ease;
+        }
+
+        .menu-items {
+            position: absolute;
+            top: 75px;
+            left: 0;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            border: 2px solid #CDE8E5;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-20px);
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle:checked~.menu-items {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .menu-item {
+            display: block;
+            padding: 15px 25px;
+            background: #EEF7FF;
+            border-bottom: 1px solid #CDE8E5;
+            text-decoration: none;
+            color: #4D869C;
+            font-weight: 600;
+            text-align: center;
+            min-width: 130px;
+            transition: all 0.2s ease;
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .menu-item:hover {
+            background: #CDE8E5;
+            color: #4D869C;
+            transform: translateX(3px);
+        }
+
+      
+    </style>
+    <link rel="stylesheet" href="./bootstrap/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="menu-container">
+        <input type="checkbox" id="menuToggle" class="menu-toggle">
+        <label for="menuToggle" class="menu-button" style="padding: 0%;"></label>
+        <div class="menu-items">
+            <a href="./khane.html" class="menu-item">خانه</a>
+            <a href="./idea.html" class="menu-item">انواع سبک </a>
+            <a href="./DecorSolution.html" class="menu-item">ايده کوتاه</a>
+            <a href="./Articles.html" class="menu-item"> مقالات </a>
+            <a href="./Color.html" class="menu-item"> رنگ ها </a>
+
+        </div>
+    </div>
+
+
+
+    <div class="article-header">
+        <h1>چيدمان بهينه اتاق نشيمن</h1>
+        <p>ترفند هايي براي راحتي و زيبايي بيشتر</p>
+    </div>
+
+
+
+    <div class="container my-5">
+        <div class="article-content">
+            <img src="./Articles/7.jpeg" alt="اتاق نشيمن" class="img-fluid article-img">
+
+
+            <p>اتاق نشیمن قلب خانه است و چیدمان مناسب آن تاثیر زیادی در راحتی
+                و زیبایی خانه دارد. با چند نکته ساده می‌توان فضا را بهینه کرد.</p>
+
+            <h4>۱. تعیین مرکز توجه</h4>
+
+            <p>اولین قدم تعیین نقطه مرکزی اتاق مانند تلویزیون،
+                شومینه یا تابلو است. مبلمان را حول این نقطه بچینید.
+            </p>
+
+            <h4>۲. مسیر حرکت آزاد</h4>
+
+            <p>مسیر حرکت باید بدون مانع باشد. مبلمان را طوری بچینید
+                که رفت‌وآمد راحت و بدون برخورد با وسایل باشد.</p>
+
+            <h4>۳. ایجاد تعادل بصری</h4>
+
+            <p>توزیع وزن بصری عناصر مثل مبلمان و تابلوها به صورت متعادل
+                باعث می‌شود اتاق دلنشین‌تر و مرتب‌تر به نظر برسد.
+            </p>
+
+            <h4>۴. استفاده از مبلمان چندمنظوره</h4>
+
+            <p>صندلی‌ها و میزهای قابل جابجایی یا مبل‌های با فضای
+                ذخیره‌سازی داخلی باعث می‌شوند اتاق مرتب و کاربردی باشد.</p>
+
+            <h4>۵. افزودن عناصر سبز</h4>
+
+            <p>گیاهان طبیعی باعث تازگی، انرژی مثبت و زیبایی بیشتر
+                اتاق می‌شوند و فضای نشیمن را دلنشین‌تر می‌کنند.</p>
+
+
+            <div class="text-center mt-4">
+                <a href="Articles.html" class="btn-back">بازگشت به مقالات</a>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="./bootstrap/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

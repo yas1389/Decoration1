@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decorino</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #cde8e5, #eef7ff);
+            font-family: "Vazir", sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4d869c;
+            margin-bottom: 50px;
+            font-weight: bold;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .idea-card {
+            background-color: #eef7ff;
+            border: none;
+            border-radius: 25px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.12);
+            transition: all 0.4s ease-in-out;
+            position: relative;
+            overflow: hidden;
+            margin-top: 25px;
+
+        }
+
+        .idea-card::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, #7ab2b2, #4d869c, #cde8e5);
+            top: 0%;
+            left: -100%;
+            transition: all 0.5s ease-in-out;
+            z-index: 0px;
+        }
+
+        .idea-card:hover::before {
+            left: 0%;
+        }
+
+        .idea-card:hover {
+            transform: translateY(-12px) scale(1.05);
+            box-shadow: 0px 16px 35px rgba(0, 0, 0, 0.25);
+        }
+
+        .idea-header {
+            background-color: #4d869c;
+            color: #fff;
+            font-weight: bold;
+            padding: 18px;
+            /* border-radius: 25px 25px 0px 0px; */
+            text-align: center;
+            font-size: 1.2rem;
+            position: relative;
+            z-index: 1px;
+            transition: color 0.4s;
+
+        }
+
+        .idea-body {
+            padding: 25px;
+            color: #333;
+            text-align: center;
+            font-size: 1rem;
+            position: relative;
+            z-index: 1px;
+            transition: color 0.4s;
+            border-radius: 25px 25px 0px 0px;
+
+
+
+        }
+
+        .idea-body span.highlight {
+            color: #7ab2b2;
+            font-weight: bold;
+            transition: all 0.4s;
+        }
+
+        .idea-card:hover .idea-body span.highlight,
+        .idea-card:hover .idea-header {
+            color: #fff;
+        }
+
+
+        .menu-container {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+
+        .menu-toggle {
+            display: none;
+        }
+
+        .menu-button {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #7AB2B2, #4D869C);
+            border: 3px solid #CDE8E5;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 20px rgba(77, 134, 156, 0.4);
+            transition: all 0.3s ease;
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .menu-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(77, 134, 156, 0.5);
+        }
+
+        .menu-button::before {
+            content: '☰';
+            transition: all 0.3s ease;
+        }
+
+        .menu-items {
+            position: absolute;
+            top: 75px;
+            left: 0;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            border: 2px solid #CDE8E5;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-20px);
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle:checked~.menu-items {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .menu-item {
+            display: block;
+            padding: 15px 25px;
+            background: #EEF7FF;
+            border-bottom: 1px solid #CDE8E5;
+            text-decoration: none;
+            color: #4D869C;
+            font-weight: 600;
+            text-align: center;
+            min-width: 130px;
+            transition: all 0.2s ease;
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .menu-item:hover {
+            background: #CDE8E5;
+            color: #4D869C;
+            transform: translateX(3px);
+        }
+
+        .back {
+            width: 50px;
+            height: 50px;
+            background-color: #4D869C;
+            border-radius: 100%;
+            position: fixed;
+            top: 3%;
+            right: 1%;
+            text-align: center;
+            padding-top: 10px;
+            color: white;
+            box-shadow: 0 5px 20px rgba(77, 134, 156, 0.4);
+            border: 3px solid #CDE8E5;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            z-index: 3000;
+
+        }
+
+        .back:hover {
+            box-shadow: 0 8px 25px rgba(77, 134, 156, 0.5);
+            transform: translateX(3px);
+
+
+        }
+    </style>
+    <link rel="stylesheet" href="./bootstrap/bootstrap.min.css">
+</head>
+
+<body>
+
+    <body>
+        <div class="menu-container">
+            <input type="checkbox" id="menuToggle" class="menu-toggle">
+            <label for="menuToggle" class="menu-button"></label>
+            <div class="menu-items">
+                <a href="./khane.html" class="menu-item">خانه</a>
+                <a href="./idea.html" class="menu-item">انواع سبک</a>
+                <a href="./DecorSolution.html" class="menu-item">ايده کوتاه</a>
+                <a href="./Articles.html" class="menu-item"> مقالات </a>
+                <a href="./Color.html" class="menu-item"> رنگ ها </a>
+
+            </div>
+        </div>
+
+        <a href="./khane.html">
+            <div class="back">برگشت</div>
+        </a>
+
+
+
+        <div class="container py-5">
+            <h1>گالري ايده هاي کوتاه دکوراسيون</h1>
+            <div class="row g-4">
+
+
+                <div class="col-md-4">
+                    <div class="card idea-card">
+                        <div class="idea-header">ايده</div>
+                        <div class="idea-body">براي <span class="highlight">اتاق کوچک </span>از آينه استفاده کن تا فضا
+                            دلباز بشه.</div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-4">
+                    <div class="card idea-card">
+                        <div class="idea-header">ايده</div>
+                        <div class="idea-body"><span class="highlight">نور پردازي مخفي </span>در سقف حس لوکس بودن ميده.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card idea-card">
+                        <div class="idea-header">ايده</div>
+                        <div class="idea-body"><span class="highlight">چوب طبيعي </span>به فضا گرمي خاصي ميده.</div>
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-4">
+                    <div class="card idea-card">
+                        <div class="idea-header">ايده</div>
+                        <div class="idea-body">رنگ هاي <span class="highlight">خنثي </span>باعث آرامش و سادگي فضا ميشن.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card idea-card">
+                        <div class="idea-header">ايده</div>
+                        <div class="idea-body">استفاده از <span class="highlight">گياهان آپارتماني </span>حس طراوت
+                            مياره.</div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card idea-card">
+                        <div class="idea-header">ايده</div>
+                        <div class="idea-body"><span class="highlight">فرش هاي روشن </span>اتاق رو بزرگتر نشون ميدن.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card idea-card">
+                        <div class="idea-header">ايده</div>
+                        <div class="idea-body">پرده هاي <span class="highlight">ساده و بلند </span>سقف رو بلندتر جلوه
+                            ميدن.</div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card idea-card">
+                        <div class="idea-header">ايده</div>
+                        <div class="idea-body">يک <span class="highlight">ديوار اکسنت رنگي </span>کل فضا رو تغيير ميده.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card idea-card">
+                        <div class="idea-header">ايده</div>
+                        <div class="idea-body"><span class="highlight">مبلمان چند کاره </span> براي خانه هاي کوچک عاليه.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card idea-card">
+                        <div class="idea-header">ايده</div>
+                        <div class="idea-body">استفاده از <span class="highlight">شمع و عود </span>حس آرامش ميده.</div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card idea-card">
+                        <div class="idea-header">ايده</div>
+                        <div class="idea-body"><span class="highlight">کتابخانه باز </span>فضا رو گرم و فرهنگي ميکنه.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card idea-card">
+                        <div class="idea-header">ايده</div>
+                        <div class="idea-body">ميز هاي <span class="highlight">شيشه اي </span>فضا رو خلوت تر نشون ميدن.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card idea-card">
+                        <div class="idea-header">ايده</div>
+                        <div class="idea-body"><span class="highlight">لوستر بزرگ </span>نقطه کانوني جذابي مي سازه.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card idea-card">
+                        <div class="idea-header">ايده</div>
+                        <div class="idea-body"><span class="highlight">تابلو هاي هنري </span>شخصيت فضا رو نشون ميدن.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card idea-card">
+                        <div class="idea-header">ايده</div>
+                        <div class="idea-body"><span class="highlight">رنگ آبي ملايم </span>آرامش بخش براي اتاق خوابه.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card idea-card">
+                        <div class="idea-header">ايده</div>
+                        <div class="idea-body">در آشپزخانه از <span class="highlight">نور زير کابينتي </span>استفاده کن.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card idea-card">
+                        <div class="idea-header">ايده</div>
+                        <div class="idea-body"><span class="highlight">آينه گرد </span>براي ورودي خيلي شيکه.</div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card idea-card">
+                        <div class="idea-header">ايده</div>
+                        <div class="idea-body"><span class="highlight">صندلي راحتي </span> گوشه اتاق، حس دنج بودن ميده.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card idea-card">
+                        <div class="idea-header">ايده</div>
+                        <div class="idea-body">استفاده از <span class="highlight">متريال فلزي </span>حس مدرن بودن مياره.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card idea-card">
+                        <div class="idea-header">ايده</div>
+                        <div class="idea-body"><span class="highlight">پاف يا عثماني </span>هم زيباست هم کاربردي.</div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card idea-card">
+                        <div class="idea-header">ايده</div>
+                        <div class="idea-body">يک <span class="highlight">فرش سنتي </span>به فضا اصالت ميده.</div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card idea-card">
+                        <div class="idea-header">ايده</div>
+                        <div class="idea-body"><span class="highlight">رنگ سفيد </span>هميشه حس پاکي و بزرگي داره.</div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card idea-card">
+                        <div class="idea-header">ايده</div>
+                        <div class="idea-body"><span class="highlight">کوسن هاي رنگي </span>سريع دکور رو تغيير ميدن.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card idea-card">
+                        <div class="idea-header">ايده</div>
+                        <div class="idea-body"><span class="highlight">قفسه هاي ديواري </span>براي جاهاي کوچک عاليه.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card idea-card">
+                        <div class="idea-header">ايده</div>
+                        <div class="idea-body"><span class="highlight">ديوار آجري </span>حس روستيک و گرم ايجاد ميکنه.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card idea-card">
+                        <div class="idea-header">ايده</div>
+                        <div class="idea-body">در اتاق کودک از <span class="highlight">رنگ هاي شاد </span>استفاده کن.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card idea-card">
+                        <div class="idea-header">ايده</div>
+                        <div class="idea-body"><span class="highlight">آب نما يا آکواريوم </span>حس آرامش طبيعت رو
+                            مياره.</div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card idea-card">
+                        <div class="idea-header">ايده</div>
+                        <div class="idea-body">ترکيب <span class="highlight">چوب و فلز </span>براي سبک صنعتي عاليه.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card idea-card">
+                        <div class="idea-header">ايده</div>
+                        <div class="idea-body"><span class="highlight">پرده هاي حرير </span>نور طبيعي رو نرم وارد مي
+                            کنن.</div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card idea-card">
+                        <div class="idea-header">ايده</div>
+                        <div class="idea-body"><span class="highlight">فرش گرد کوچک </span>فضا رو خاص و متفاوت مي کنه.
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <script src="./bootstrap/bootstrap.bundle.min.js"></script>
+    </body>
+
+</html>
